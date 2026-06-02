@@ -82,9 +82,9 @@ void Person::saveInCSV(ofstream &csvOutputFile) {
         throw runtime_error("File not Opened for Writing");
     }
 
-    csvOutputFile << id << " " << name << " "
-                << age << " " << contact << " "
-           << isActive << " " << type << endl;
+    csvOutputFile << id << "," << name << ","
+                << age << "," << contact << ","
+           << isActive << "," << type << endl;
 }
 
 void Person::loadFromCSV(ifstream &csvInputFile) {

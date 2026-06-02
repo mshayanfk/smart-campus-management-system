@@ -80,11 +80,11 @@ void Student::saveInCSV(ofstream &csvOutputFile) {
         throw runtime_error("File not opened for Writing");
     }
 
-    csvOutputFile << id << " " << name << " "
-                  << age << " " << contact << " "
-                 << isActive << " " << type << " "
-                 << registrationNo << " " << department << " "
-                 << department << " " << section << " "
+    csvOutputFile << id << "," << name << ","
+                  << age << "," << contact << ","
+                 << isActive << "," << type << ","
+                 << registrationNo << "," << department << ","
+                 << department << "," << section << ","
                  << gpa << endl;
                        
 }
