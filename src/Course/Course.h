@@ -28,9 +28,9 @@ public:
 
         string courseCode,
         string courseName,
-        string semester,
         int credithours,
         string department,
+        string semester,
         bool status);
 
     void setCourseCode(string courseCode);
@@ -46,7 +46,7 @@ public:
     int getCreditHours() const;
     void setDepartment() const;
     bool getStatus() const;
-    
+
     bool matchesCode(string searchCode) const;
 };
 #endif
