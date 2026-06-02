@@ -31,14 +31,13 @@ class Student : public Person {
     void setDepartment(string department);
     void setSemester(string semester);
     void setSecttion(string section);
-    void setCGPA(float cgpa);
-    void setAchievement(string achievement);
+    void setGPA(float gpa);
 
     string getRegNo() const;
     string getDepartment() const;
     string getSemester() const;
-    string getSecttion() const;
-    float getCGPA() const;
+    string getSection() const;
+    float getGPA() const;
     string getAchievement() const;
 };
 
