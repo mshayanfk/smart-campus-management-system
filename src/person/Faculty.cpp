@@ -90,3 +90,103 @@ void Faculty::display() const {
     cout << "=================================================" << endl;
 
 }
+
+void Faculty::saveInCSV(ofstream &csvOutputFile) {
+
+    if (!csvOutputFile.is_open()) {
+        throw runtime_error("File not opened for writing");
+    }
+
+    csvOutputFile << id << "," << name << "," <<
+    age << "," << contact << "," << isActive << ","
+    << type << "," << department << "," << specialization << ","
+    << offRoom << "," << course << "," << experience << ","
+    << salary << endl;
+}
+
+void Faculty::loadFromCSV(ifstream &csvInputFile) {
+    string line;
+
+    if (!getline(csvInputFile, line))
+    return;
+
+    stringstream sh(line);
+    string temp;
+
+    getline(sh, temp, ',');
+    id = stoi(temp);
+
+    getline(sh, name, ',');
+
+    getline(sh, temp, ',');
+    age = stoi(temp);
+
+    getline(sh, contact, ',');
+
+    getline(sh, temp, ',');
+    isActive = stoi(temp);
+
+    getline(sh, temp, ',');
+    type = (PersonType)stoi(temp);
+
+    getline(sh, department, ',');
+    getline(sh, specialization, ',');
+    getline(sh, offRoom, ',');
+    getline(sh, course, ',');
+
+    getline(sh, temp, ',');
+    experience = stoi(temp);
+
+    getline(sh, temp, ',');
+    salary = stoi(temp);
+
+}
+
+void Faculty::setDepartment(string getDepartment) {
+    this->department = department;
+}
+
+void Faculty::setSpecialization(string specialization) {
+    this->specialization = specialization;
+}
+
+void Faculty::setRoom(string offRoom) {
+    this->offRoom = offRoom;
+}
+
+void Faculty::setCourse(string course) {
+    this->course = course;
+}
+
+void Faculty::setExperience(int experience) {
+    this->experience = experience;
+}
+
+void Faculty::setSalary(double salary) {
+    this->salary = salary;
+}
+
+
+string Faculty::getDepartment() const {
+    return department;
+}
+
+string Faculty::getSpecialization() const {
+    return specialization;
+}
+
+string Faculty::getRoom() const {
+    return offRoom;
+}
+
+string Faculty::getCourse() const {
+    return course;
+}
+
+int Faculty::getExperience() const {
+    return experience;
+}
+
+double Faculty::getSalary() const {
+    return salary;
+}
