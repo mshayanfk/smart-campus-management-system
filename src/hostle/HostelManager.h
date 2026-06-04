@@ -11,7 +11,7 @@ using namespace std;
 class HostelManager {
 
     private:
-    vector<HostelBlock> hostleblocks;
+    vector<HostelBlock> hostelBlocks;
 
     public:
     HostelManager();
