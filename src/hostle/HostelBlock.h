@@ -27,7 +27,7 @@ class HostelBlock {
     void addRoom(const Room &room);
     void displayRooms() const;
 
-    void saveInCSV(ofstream &csvOutputFile);
+    void saveInCSV(ofstream &csvOutputFile) const;
     void loadFromCSV(ifstream &csvInputFile);
 
     void setBlockName(string blockName);

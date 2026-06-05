@@ -23,7 +23,7 @@ class HostelManager {
 
     void searchBlock(string blockName) const;
 
-    void saveInCSV(ofstream &csvOutputFile);
+    void saveInCSV(ofstream &csvOutputFile) const;
     void loadFromCSV(ifstream &csvInputFile);
 
     vector<HostelBlock>& getBlocks();

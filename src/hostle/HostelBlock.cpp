@@ -69,7 +69,7 @@ void HostelBlock::displayRooms() const {
     }
 }
 
-void HostelBlock::saveInCSV(ofstream &csvOutputFile) {
+void HostelBlock::saveInCSV(ofstream &csvOutputFile) const {
 
     if (!csvOutputFile.is_open()) {
         throw runtime_error("File not Opened for Writing");
