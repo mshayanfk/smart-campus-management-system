@@ -30,7 +30,17 @@ class FeeRecord {
     void setStudentID(int studentID);
     void setStudentName(string studentName);
     void setFeeType(string feeType);
+    void setDueDate(string dueDate);
+    void setAmount(double amount);
+    void setPaid(bool isPaid);
 
+    int getFeeID() const;
+    int getStudentID() const;
+    string getStudentName() const;
+    string getFeeType() const;
+    string getDueDate() const;
+    double getAmount() const;
+    bool getPaid() const;
 };
 
 #endif
