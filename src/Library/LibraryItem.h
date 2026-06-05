@@ -19,23 +19,18 @@ private:
 
 public:
 
-    // Constructor
+    
     LibraryItem();
-
-    // Destructor
     ~LibraryItem();
 
-    // Core Functions
     void input();
 
     void display() const;
 
-    // File Handling
     void saveToCSV(std::ofstream &outputFile);
 
     void loadFromCSV(std::ifstream &inputFile);
 
-    // Utility Function
     void setData(
         int itemId,
         string title,
@@ -44,8 +39,6 @@ public:
         int publicationYear,
         bool availability
     );
-
-    // Setters
     void setTitle(string title);
 
     void setCategory(string category);
@@ -55,8 +48,6 @@ public:
     void setPublicationYear(int publicationYear);
 
     void setAvailability(bool availability);
-
-    // Getters
     int getItemId() const;
 
     string getTitle() const;
@@ -69,7 +60,6 @@ public:
 
     bool getAvailability() const;
 
-    // Search Helpers
     bool matchesItemId(int searchItemId) const;
 
     bool matchesTitle(string searchTitle) const;
