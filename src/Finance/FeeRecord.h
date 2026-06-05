@@ -10,7 +10,7 @@ class FeeRecord {
 
     int feeID;
     int studentID;
-    string StudentName;
+    string studentName;
     string feeType;
     string dueDate;
     double amount;
