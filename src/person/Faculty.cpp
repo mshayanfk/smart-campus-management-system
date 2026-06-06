@@ -138,7 +138,7 @@ void Faculty::loadFromCSV(ifstream &csvInputFile) {
     experience = stoi(temp);
 
     getline(sh, temp, ',');
-    salary = stoi(temp);
+    salary = stod(temp);
 
 }
 

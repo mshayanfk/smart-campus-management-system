@@ -41,6 +41,10 @@ void Staff::input() {
     cout << "Enter your Salary = ";
     cin >> salary;
 
+    if (cin.fail()) {
+        throw runtime_error("Invalid Salary Input");    
+    }
+
     if (salary < 0) {
         throw runtime_error("Invalid Input Of Salary");
     }
@@ -71,8 +75,7 @@ void Staff::saveInCSV(ofstream &csvOutputFile) {
     << age << "," << contact << ","
     << isActive << "," << type << ","
     << department << "," << role << ","
-     << "," << shift << "," 
-    << salary << "," << endl;
+    << shift << "," << salary << "," << endl;
 }
 
 void Staff::loadFromCSV(ifstream &csvInputFile) {

@@ -2,6 +2,7 @@
 #include <sstream>
 #include <iomanip>
 #include <stdexcept>
+#include <limits>
 using namespace std;
 
 Student::Student() {
@@ -20,7 +21,8 @@ Student::~Student() {}
 void Student::input() {
 
     Person::input();
-    cin.ignore();
+
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
 
     cout << "-----------------------------------------" <<  endl;
@@ -41,6 +43,10 @@ void Student::input() {
 
     cout << "Enter Your GPA = ";
     cin >> gpa;
+
+    if (cin.fail()) {
+        throw runtime_error("Invalid GPA input");
+    }
 
     if (gpa < 0.0 || gpa > 4.0) {
         throw runtime_error("Invalid GPA");
@@ -84,8 +90,7 @@ void Student::saveInCSV(ofstream &csvOutputFile) {
                   << age << "," << contact << ","
                  << isActive << "," << type << ","
                  << registrationNo << "," << department << ","
-                 << department << "," << section << ","
-                 << gpa << endl;
+                 << section << "," << gpa << endl;
                        
 }
 
