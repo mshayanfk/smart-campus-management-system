@@ -6,23 +6,21 @@
 
 using namespace std;
 
-// Constructor
-Journal::Journal() {
+Journal::Journal()
+{
     journalName = "";
     volume = 0;
     issueNumber = 0;
     editor = "";
 }
 
-// Destructor
-Journal::~Journal() {
-    // No dynamic memory used
+Journal::~Journal()
+{
 }
 
-// INPUT FUNCTION
-void Journal::input() {
+void Journal::input()
+{
 
-    // Input base class data first
     LibraryItem::input();
 
     cout << "\n===== ENTER JOURNAL DETAILS =====\n";
@@ -35,14 +33,16 @@ void Journal::input() {
     cout << "Enter Volume Number: ";
     cin >> volume;
 
-    if (volume <= 0) {
+    if (volume <= 0)
+    {
         throw runtime_error("Invalid volume number!");
     }
 
     cout << "Enter Issue Number: ";
     cin >> issueNumber;
 
-    if (issueNumber <= 0) {
+    if (issueNumber <= 0)
+    {
         throw runtime_error("Invalid issue number!");
     }
 
@@ -52,10 +52,9 @@ void Journal::input() {
     getline(cin, editor);
 }
 
-// DISPLAY FUNCTION
-void Journal::display() const {
+void Journal::display() const
+{
 
-    // Display base class information first
     LibraryItem::display();
 
     cout << left << setw(20) << "Journal Name:" << journalName << endl;
@@ -66,10 +65,11 @@ void Journal::display() const {
     cout << "=====================================\n";
 }
 
-// SAVE TO CSV
-void Journal::saveToCSV(ofstream &outputFile) {
+void Journal::saveToCSV(ofstream &outputFile)
+{
 
-    if (!outputFile.is_open()) {
+    if (!outputFile.is_open())
+    {
         throw runtime_error("File not open for writing!");
     }
 
@@ -80,8 +80,8 @@ void Journal::saveToCSV(ofstream &outputFile) {
                << endl;
 }
 
-// LOAD FROM CSV
-void Journal::loadFromCSV(ifstream &inputFile) {
+void Journal::loadFromCSV(ifstream &inputFile)
+{
 
     string line;
 
@@ -102,58 +102,64 @@ void Journal::loadFromCSV(ifstream &inputFile) {
     getline(ss, editor, ',');
 }
 
-// SET DATA
 void Journal::setData(
     string journalName,
     int volume,
     int issueNumber,
-    string editor
-) {
+    string editor)
+{
     this->journalName = journalName;
     this->volume = volume;
     this->issueNumber = issueNumber;
     this->editor = editor;
 }
 
-// SETTERS
-void Journal::setJournalName(string journalName) {
+void Journal::setJournalName(string journalName)
+{
     this->journalName = journalName;
 }
 
-void Journal::setVolume(int volume) {
+void Journal::setVolume(int volume)
+{
     this->volume = volume;
 }
 
-void Journal::setIssueNumber(int issueNumber) {
+void Journal::setIssueNumber(int issueNumber)
+{
     this->issueNumber = issueNumber;
 }
 
-void Journal::setEditor(string editor) {
+void Journal::setEditor(string editor)
+{
     this->editor = editor;
 }
 
-// GETTERS
-string Journal::getJournalName() const {
+string Journal::getJournalName() const
+{
     return journalName;
 }
 
-int Journal::getVolume() const {
+int Journal::getVolume() const
+{
     return volume;
 }
 
-int Journal::getIssueNumber() const {
+int Journal::getIssueNumber() const
+{
     return issueNumber;
 }
 
-string Journal::getEditor() const {
+string Journal::getEditor() const
+{
     return editor;
 }
 
-// SEARCH HELPERS
-bool Journal::matchesJournalName(string searchJournalName) const {
+bool Journal::matchesJournalName(string searchJournalName) const
+{
     return journalName == searchJournalName;
 }
 
-bool Journal::matchesEditor(string searchEditor) const {
+bool Journal::matchesEditor(string searchEditor) const
+{
     return editor == searchEditor;
 }
