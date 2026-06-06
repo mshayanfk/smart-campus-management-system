@@ -19,8 +19,11 @@ private:
     bool isAvailable;
 
 public:
+
+    // Constructor
     LibraryItem();
 
+    // Destructor
     ~LibraryItem();
 
     void input();
@@ -37,8 +40,10 @@ public:
         string category,
         string publisher,
         int publicationYear,
-        bool availability);
+        bool availability
+    );
 
+    // Setters
     void setTitle(string title);
 
     void setCategory(string category);
@@ -49,6 +54,7 @@ public:
 
     void setAvailability(bool availability);
 
+    // Getters
     int getItemId() const;
 
     string getTitle() const;
