@@ -3,6 +3,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <iomanip>
+#include <limits>
 using namespace std;
 
 int Person::nextID = 1;
@@ -20,7 +21,7 @@ Person::~Person() {}
 
 void Person::input() {
     cout << "---------- ENTER THE PERSON DETAILS ----------" << endl;
-    cin.ignore();
+    cin.ignore(numeric_limits<streamsize>::max(),  'n');
 
     cout << "Enter Your Name = ";
     getline(cin, name);
@@ -28,7 +29,9 @@ void Person::input() {
     cout << "Enter your Age = ";
     cin >> age;
 
-    if (!age) return;
+    if (cin.fail()) {
+        throw runtime_error("Invalid Age Input");
+    }
 
     if (age <= 0 || age > 100) {
         throw runtime_error("Age Should be in Between 1 & 100");
@@ -43,6 +46,10 @@ void Person::input() {
 
     cout << "Enter your Type (0 = Student, 1 = Staff, 2 = Faculty) = ";
     cin >> choice;
+
+    if (choice < 0 || choice > 2) {
+        throw runtime_error("Invalid Person Type Choice");
+    }
 
     type = (PersonType)choice;
 
@@ -112,6 +119,10 @@ void Person::loadFromCSV(ifstream &csvInputFile) {
 
     getline(ss, temp, ',');
     type = (PersonType)stoi(temp);
+
+    if (id >= nextID) {
+        nextID = id + 1;
+    }
 
 }
 
