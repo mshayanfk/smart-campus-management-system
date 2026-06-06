@@ -7,7 +7,8 @@
 
 using namespace std;
 
-class LibraryItem {
+class LibraryItem
+{
 
 private:
     int itemId;
@@ -18,34 +19,26 @@ private:
     bool isAvailable;
 
 public:
-
-    // Constructor
     LibraryItem();
 
-    // Destructor
     ~LibraryItem();
 
-    // Core Functions
     void input();
 
     void display() const;
 
-    // File Handling
     void saveToCSV(std::ofstream &outputFile);
 
     void loadFromCSV(std::ifstream &inputFile);
 
-    // Utility Function
     void setData(
         int itemId,
         string title,
         string category,
         string publisher,
         int publicationYear,
-        bool availability
-    );
+        bool availability);
 
-    // Setters
     void setTitle(string title);
 
     void setCategory(string category);
@@ -56,7 +49,6 @@ public:
 
     void setAvailability(bool availability);
 
-    // Getters
     int getItemId() const;
 
     string getTitle() const;
@@ -69,7 +61,6 @@ public:
 
     bool getAvailability() const;
 
-    // Search Helpers
     bool matchesItemId(int searchItemId) const;
 
     bool matchesTitle(string searchTitle) const;
