@@ -28,6 +28,7 @@ void Course::input()
     getline(cin, courseName);
     cout << "Enter the credit hours";
     cin >> creditHours;
+
     if (creditHours <= 0 || creditHours > 6)
     {
         throw runtime_error("invalid credit hours!");
@@ -104,7 +105,7 @@ void Course::setCourseName(string CourseName) {
 void Course::setCourseCreditHours(int creditHours) {
     this->creditHours = creditHours;
 }
-void Course::setDepartment(string Department) {
+void Course::setDepartment(string department) {
     this->department = department;
 }
 void Course::setSemester(string semester) {

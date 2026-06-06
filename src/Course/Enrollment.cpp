@@ -92,7 +92,6 @@ void Enrollment::setData(
     this->studentId = studentId;
     this->courseCode = courseCode;
     this->semester = semester;
-    this->enrollmentId = enrollmentId;
     this->grade = grade;
     this->isActive = status;
 }
@@ -100,11 +99,11 @@ void Enrollment::setStudentId(int studentId)
 {
     this->studentId = studentId;
 }
-void Enrollment::setCourseCode(string CourseCode)
+void Enrollment::setCourseCode(string courseCode)
 {
     this->courseCode = courseCode;
 }
-void Enrollment::setSemester(string Semester)
+void Enrollment::setSemester(string semester)
 {
     this->semester = semester;
 }
