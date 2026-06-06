@@ -1,5 +1,5 @@
-#ifndef HOSTLEBLOCK_H;
-#define HOSTLEBLOCK_H;
+#ifndef HOSTLEBLOCK_H
+#define HOSTLEBLOCK_H
 #include "Room.h"
 
 #include <iostream>
