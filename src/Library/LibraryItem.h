@@ -20,10 +20,9 @@ private:
 
 public:
 
-    // Constructor
+   
     LibraryItem();
 
-    // Destructor
     ~LibraryItem();
 
     void input();
@@ -43,7 +42,7 @@ public:
         bool availability
     );
 
-    // Setters
+  
     void setTitle(string title);
 
     void setCategory(string category);
@@ -54,7 +53,6 @@ public:
 
     void setAvailability(bool availability);
 
-    // Getters
     int getItemId() const;
 
     string getTitle() const;
