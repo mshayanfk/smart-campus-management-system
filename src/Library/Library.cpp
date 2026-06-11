@@ -21,12 +21,15 @@ Library::~Library()
 void Library::input()
 {
     cout << "\n===== ENTER BOOK DETAILS =====\n";
+    cout << "Enter Book ID = ";
+    cin >> bookId;
+    cin.ignore();
     cout << "Enter Book Title";
     cin >> bookId;
     cin.ignore();
     cout << "Enter Book Title:";
     getline(cin, bookTitle);
-    cout << "Enter Aurthor Name:";
+    cout << "Enter Author Name:";
     getline(cin, author);
     cout << "Enter category:";
     getline(cin, category);
@@ -35,7 +38,7 @@ void Library::input()
     cin.ignore();
     cout << "Enter the Issue Date:";
     getline(cin, issueDate);
-    cout << "Enter the Returm Date:";
+    cout << "Enter the Return Date:";
     getline(cin, returnDate);
 
     isAvailable = true;
@@ -54,7 +57,7 @@ void Library::display() const
     cout << left << setw(20) << "Issue Date:" << issueDate << endl;
     cout << left << setw(20) << "Return date:" << returnDate << endl;
 
-    cout << left << setw(20) << "Availability:" << (isAvailable ? "Available" : "Unavailabel") << endl;
+    cout << left << setw(20) << "Availability:" << (isAvailable ? "Available" : "Unavailable") << endl;
 
     cout << "=====================================\n";
 }
@@ -76,6 +79,8 @@ void Library::loadFromCSV(ifstream &inputFile)
         return;
     stringstream ss(line);
     string temp;
+
+    getline(ss, temp, ',');
     bookId = stoi(temp);
 
     getline(ss, bookTitle, ',');
@@ -102,28 +107,33 @@ void Library::setData(
     this->bookId=bookId;
     this->bookTitle=bookTitle;
     this->author=author;
+    this->category = category;
     this->quantity=quantity;
     this->issueDate=issueDate;
     this->returnDate=returnDate;
-    
-this->isAvailable=availability;
+    this->isAvailable=availability;
 }
-void Library::setBookTitle(string BookTitle){
-    this->bookTitle=bookTitle;
+
+void Library::setBookId(int bookId) {
+    this->bookId = bookId;
 }
-void Library::setAuthor(string Category){
+
+void Library::setBookTitle(string bookTitle){
+    this->bookTitle = bookTitle;
+}
+void Library::setAuthor(string author){
     this->author=author;
 
 }
-void Library::setCategory(string Category){
+void Library::setCategory(string category){
     this->category=category;
 
 }
 void Library::setQuantity(int quantity){
-    this->quantity=quantity;
+    this->quantity = quantity;
 }
 void Library::setIssueDate(string issueDate){
-    this->issueDate;
+    this->issueDate = issueDate;
 }
 void Library::setReturnDate(string returnDate){
     this->returnDate=returnDate;
@@ -137,7 +147,7 @@ int Library::getBookId() const{
     return bookId;
 }
 string Library::getBookTitle() const{
-    return author;
+    return bookTitle;
 }
 string Library::getCategory() const{
   return category;

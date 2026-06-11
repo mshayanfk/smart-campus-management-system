@@ -27,7 +27,7 @@ public:
 
     void display() const;
 
-    void saveToCSV(std::ofstream &outputFile);
+    void saveToCSV(std::ofstream &outputFile) const;
 
     void loadFromCSV(std::ifstream &inputFile);
 
