@@ -44,7 +44,7 @@ public:
     string getCourseName() const;
     string getSemester() const;
     int getCreditHours() const;
-    void setDepartment() const;
+    void getDepartment() const;
     bool getStatus() const;
 
     bool matchesCode(string searchCode) const;

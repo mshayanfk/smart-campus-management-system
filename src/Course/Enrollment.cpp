@@ -92,6 +92,8 @@ void Enrollment::setData(
     this->studentId = studentId;
     this->courseCode = courseCode;
     this->semester = semester;
+    this->session = session;
+    this->enrollmentDate = enrollmentDate;
     this->enrollmentId = enrollmentId;
     this->grade = grade;
     this->isActive = status;
@@ -136,6 +138,11 @@ string Enrollment::getCourseCode() const{
 string Enrollment::getSemester() const{
     return semester;
 }
+
+string Enrollment::getSession() const {
+    return session;
+}
+
 string Enrollment::getEnrollmentDate() const{
     return enrollmentDate;
 
