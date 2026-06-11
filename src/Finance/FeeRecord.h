@@ -26,6 +26,16 @@ class FeeRecord {
     void saveInCSV(ofstream &csvOutputFile) const;
     void loadFromCSV(ifstream &csvInputFile);
 
+    void setData(
+        int feeID,
+        int studentID,
+        string studentName,
+        string feeType,
+        string dueDate,
+        double amount,
+        bool isPaid
+    );
+
     void setFeeID(int feeID);
     void setStudentID(int studentID);
     void setStudentName(string studentName);
@@ -41,6 +51,10 @@ class FeeRecord {
     string getDueDate() const;
     double getAmount() const;
     bool getPaid() const;
+
+    bool matchesFeeID(int searchID) const;
+    bool matchesStudentID(int searchID) const;
+
 };
 
 #endif

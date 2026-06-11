@@ -21,7 +21,7 @@ FeeRecord::~FeeRecord() {}
 void FeeRecord::input() {
 
     cout << "===========================================" << endl;
-    cout << "------------- FEE RECORD ENTRT ------------" << endl;
+    cout << "------------- FEE RECORD ENTRY ------------" << endl;
     cout << "===========================================" << endl;
 
     cout << "Enter The Fee ID = ";
@@ -46,8 +46,8 @@ void FeeRecord::input() {
     cout << "Enter the Fee Type (Hostel/Transport/Tuition) = ";
     getline(cin, feeType);
 
-    cout << "Enter the Due Date (DD-MM--YY) = ";
-    cin >> dueDate;
+    cout << "Enter the Due Date (DD-MM--YYYY) = ";
+    getline(cin, dueDate);
 
     cout << "Enter the Amount = ";
     cin >> amount;
@@ -116,6 +116,27 @@ void FeeRecord::loadFromCSV(ifstream &csvInputFile) {
     isPaid = stoi(temp);
 }
 
+void FeeRecord::setData(
+    int feeID,
+    int studentID,
+    string studentName,
+    string feeType,
+    string dueDate,
+    double amount,
+    bool isPaid
+)
+
+{
+    this->feeID       = feeID;
+    this->studentID   = studentID;
+    this->studentName = studentName;
+    this->feeType     = feeType;
+    this->dueDate     = dueDate;
+    this->amount      = amount;
+    this->isPaid      = isPaid;
+}
+
+
 void FeeRecord::setFeeID(int feeID) {
     this->feeID = feeID;
 }
@@ -171,4 +192,12 @@ double FeeRecord::getAmount() const {
 
 bool FeeRecord::getPaid() const {
     return isPaid;
+}
+
+bool FeeRecord::matchesFeeID(int searchID) const {
+    return feeID == searchID;
+}
+
+bool FeeRecord::matchesStudentID(int searchID) const {
+    return studentID == searchID;
 }
