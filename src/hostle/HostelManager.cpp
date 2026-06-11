@@ -48,6 +48,21 @@ void HostelManager::searchBlock(string blockName) const {
     }
 }
 
+void HostelManager::removeBlock(string blockName) {
+    bool found = false;
+    for (int i = 0; i < hostelBlocks.size(); i++) {
+        if (hostelBlocks[i].getBlockName() == blockName) {
+            hostelBlocks.erase(hostelBlocks.begin() + i);
+            cout << "Block Removed Successfully" << endl;
+            found = true;
+            break;
+        }
+    }
+    if (!found) {
+        cout << "No Block Found With This Name = " << blockName << endl;
+    }
+}
+
 void HostelManager::saveInCSV(ofstream &csvOutputFile) const {
 
     if (!csvOutputFile.is_open()) {
@@ -60,25 +75,18 @@ void HostelManager::saveInCSV(ofstream &csvOutputFile) const {
 }
 
 void HostelManager::loadFromCSV(ifstream &csvInputFile) {
-
     if (!csvInputFile.is_open()) {
         throw runtime_error("File not opened for reading!");
     }
-
     hostelBlocks.clear();
 
-    while (!csvInputFile.eof()) {
-        HostelBlock block;
+    HostelBlock block;
+    while (true) {
         block.loadFromCSV(csvInputFile);
-
-        if (csvInputFile.fail()) {
-            break;
-        }
-
+        if (csvInputFile.fail() || csvInputFile.eof()) break;
         hostelBlocks.push_back(block);
     }
 }
-
 
 vector<HostelBlock>& HostelManager::getBlocks() {
     return hostelBlocks;

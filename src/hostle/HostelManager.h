@@ -1,5 +1,5 @@
-#ifndef HOSTELMANAGER
-#define HOSTELMANAGER
+#ifndef HOSTELMANAGER_H
+#define HOSTELMANAGER_H
 #include "HostelBlock.h"
 
 #include <iostream>
@@ -22,6 +22,8 @@ class HostelManager {
     void displayAllBlocks() const;
 
     void searchBlock(string blockName) const;
+
+    void removeBlock(string blockName);
 
     void saveInCSV(ofstream &csvOutputFile) const;
     void loadFromCSV(ifstream &csvInputFile);
