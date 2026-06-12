@@ -145,11 +145,26 @@ void Invoice::loadFromCSV(ifstream &csvInputFile) {
 
     getline(ss, issueDate, ',');
 
-    getline(ss, temp, ',');
+     getline(ss, temp, ',');
     feeRecord.setFeeID(stoi(temp));
 
     getline(ss, temp, ',');
     feeRecord.setStudentID(stoi(temp));
+
+    getline(ss, temp, ',');
+    feeRecord.setStudentName(temp);
+
+    getline(ss, temp, ',');
+    feeRecord.setFeeType(temp);
+
+    getline(ss, temp, ',');
+    feeRecord.setDueDate(temp);
+
+    getline(ss, temp, ',');
+    feeRecord.setAmount(stod(temp));
+
+    getline(ss, temp, ',');
+    feeRecord.setPaid(stod(temp));
 
     getline(ss, temp, ',');
     totalAmount = stod(temp);
@@ -166,7 +181,7 @@ void Invoice::setInvoiceID(int invoiceID) {
     this->invoiceID = invoiceID;
 }
 
-void Invoice::setIssuDate(string issueDate) {
+void Invoice::setIssueDate(string issueDate) {
     this->issueDate = issueDate;
 }
 
@@ -174,9 +189,9 @@ void Invoice::setFeeRecord(FeeRecord record) {
     this->feeRecord = record;
 }
 
-void Invoice::setAmount(double paidAmoutn) {
-    this->paidAmount = paidAmoutn;
-    this->remainingAmount = totalAmount - paidAmoutn;
+void Invoice::setAmount(double paidAmount) {
+    this->paidAmount = paidAmount;
+    this->remainingAmount = totalAmount - paidAmount;
 }
 
 

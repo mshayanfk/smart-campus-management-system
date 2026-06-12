@@ -33,9 +33,9 @@ class Invoice {
     void printReceipt() const;
 
     void setInvoiceID(int invoiceID);
-    void setIssuDate(string issueDate);
+    void setIssueDate(string issueDate);
     void setFeeRecord(FeeRecord record);
-    void setAmount(double paidAmoutn);
+    void setAmount(double paidAmount);
 
     int getInvoiceID() const;
     string getIssueDate() const;
