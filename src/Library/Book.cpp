@@ -60,7 +60,7 @@ void Book::display() const
     cout << "=====================================\n";
 }
 
-void Book::saveToCSV(ofstream &outputFile)
+void Book::saveToCSV(ofstream &outputFile) const
 {
 
     if (!outputFile.is_open())

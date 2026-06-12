@@ -65,8 +65,7 @@ void Journal::display() const
     cout << "=====================================\n";
 }
 
-void Journal::saveToCSV(ofstream &outputFile)
-{
+void Journal::saveToCSV(ofstream &outputFile) const {
 
     if (!outputFile.is_open())
     {

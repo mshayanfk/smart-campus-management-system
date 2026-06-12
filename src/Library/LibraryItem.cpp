@@ -65,7 +65,7 @@ void LibraryItem::display() const {
     cout << "=====================================\n";
 }
 
-void LibraryItem::saveToCSV(ofstream &outputFile) {
+void LibraryItem::saveToCSV(ofstream &outputFile) const {
 
     if (!outputFile.is_open()) {
         throw runtime_error("File not open for writing!");
@@ -120,6 +120,10 @@ void LibraryItem::setData(
     this->publisher = publisher;
     this->publicationYear = publicationYear;
     this->isAvailable = availability;
+}
+
+void LibraryItem::setItemId(int itemId) {
+    this->itemId = itemId;
 }
 
 void LibraryItem::setTitle(string title) {

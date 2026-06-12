@@ -29,7 +29,7 @@ public:
 
     void display() const;
 
-    void saveToCSV(std::ofstream &outputFile);
+    void saveToCSV(std::ofstream &outputFile) const;
 
     void loadFromCSV(std::ifstream &inputFile);
 
@@ -42,33 +42,23 @@ public:
         bool availability
     );
 
-  
+    void setItemId(int itemId);
     void setTitle(string title);
-
     void setCategory(string category);
-
     void setPublisher(string publisher);
-
     void setPublicationYear(int publicationYear);
-
     void setAvailability(bool availability);
 
+
     int getItemId() const;
-
     string getTitle() const;
-
     string getCategory() const;
-
     string getPublisher() const;
-
-    int getPublicationYear() const;
-
+    int getPublicationYear() const; 
     bool getAvailability() const;
 
     bool matchesItemId(int searchItemId) const;
-
     bool matchesTitle(string searchTitle) const;
-
     bool matchesCategory(string searchCategory) const;
 };
 

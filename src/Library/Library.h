@@ -43,40 +43,29 @@ public:
         string returnDate,
         bool availability);
 
+    
+    void setBookId(int bookId);
     void setBookTitle(string bookTitle);
-
     void setAuthor(string author);
-
     void setCategory(string category);
-
     void setQuantity(int quantity);
-
     void setIssueDate(string issueDate);
-
     void setReturnDate(string returnDate);
-
     void setAvailability(bool availability);
 
+
     int getBookId() const;
-
     string getBookTitle() const;
-
     string getAuthor() const;
-
     string getCategory() const;
-
     int getQuantity() const;
-
     string getIssueDate() const;
-
     string getReturnDate() const;
-
     bool getAvailability() const;
 
+
     bool matchesBookId(int searchBookId) const;
-
     bool matchesBookTitle(string searchTitle) const;
-
     bool matchesAuthor(string searchAuthor) const;
 };
 

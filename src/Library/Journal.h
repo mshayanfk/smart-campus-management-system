@@ -27,7 +27,7 @@ public:
 
     void display() const;
 
-    void saveToCSV(std::ofstream &outputFile);
+    void saveToCSV(std::ofstream &outputFile) const;
 
     void loadFromCSV(std::ifstream &inputFile);
 
@@ -38,23 +38,15 @@ public:
         string editor);
 
     void setJournalName(string journalName);
-
     void setVolume(int volume);
-
     void setIssueNumber(int issueNumber);
-
     void setEditor(string editor);
-
     string getJournalName() const;
-
     int getVolume() const;
-
     int getIssueNumber() const;
-
     string getEditor() const;
 
     bool matchesJournalName(string searchJournalName) const;
-
     bool matchesEditor(string searchEditor) const;
 };
 
