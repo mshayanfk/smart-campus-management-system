@@ -25,7 +25,7 @@ class Reports {
 
 public:
 
-    static void generatePersonReport(vector<Person> &persons);
+    static void generatePersonReport(vector<Person*> &persons);
 
     static void generateCourseReport(vector<Course> &courses);
 

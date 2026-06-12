@@ -1,17 +1,17 @@
 #include "Reports.h"
 using namespace std;
 
-void Reports::generatePersonReport(vector<Person> &persons) {
+void Reports::generatePersonReport(vector<Person*> &persons) {
 
     cout << "========= PERSON REPORT =========";
 
     if (persons.empty()) {
-        cout << "No Person Records Found"; 
+        cout << "No Person Records Found" <<endl; 
         return;
     }
 
-    for (Person &p : persons) {
-        p.display();
+    for (Person* &p : persons) {
+        p->display();
     }
 }
 
