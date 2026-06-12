@@ -131,35 +131,38 @@ void Student::loadFromCSV(ifstream &csvInputFile) {
 string Student::getAchievement() const {
 
     if (gpa >= 3.8) {
-        cout << "Scholarship Acquired";
+         return "Scholarship Acquired";
     }
 
     else if(gpa >= 3.5) {
-        cout <<  "Outstanding Student";
+        return "Outstanding Student";
     }
 
     else if (gpa >= 3.0) {
-        cout << "Good Academic Result";
+        return "Good Academic Result";
     }
 
     else if (gpa >= 2.5) {
-        cout << "Good Boy";
+        return "Good Boy";
     }
 
     else if (gpa >= 2.0) {
 
-        cout << "Try Hard";
+        return "Try Hard";
     }
 
-    else 
+    else {
+
     return "Skill Issue";
+
+    }
 }
 
 void Student::setRegNo(string registrationNo) {
     this->registrationNo = registrationNo;
 }
 
-void Student::setDepartment(string deparrtment) {
+void Student::setDepartment(string department) {
     this->department = department;
 }
 
@@ -167,7 +170,7 @@ void Student::setSemester(string semester) {
     this->semester = semester;
 }
 
-void Student::setSecttion(string section) {
+void Student::setSection(string section) {
     this->section = section;
 }
 

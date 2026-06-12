@@ -47,16 +47,16 @@ void Faculty::input() {
         throw runtime_error("You Entered Invalid Experience");
     }
 
-    if (experience > 3) {
-        cout << "Good Boy";
+    if (experience > 10) {
+        cout << "Hacker";
     }
 
     else if (experience > 5) {
         cout << "Master";
     }
 
-    else if (experience > 10) {
-        cout << "Hacker";
+    else if (experience > 3) {
+        cout << "Good Boy";
     }
 
     cout << "Enter your Salary = ";
@@ -64,7 +64,6 @@ void Faculty::input() {
 
     if (salary < 0) {
         throw runtime_error("Invalid Salary");
-        cout << "You can't be that Poor Bro";
     }
 }
 
@@ -83,7 +82,7 @@ void Faculty::display() const {
     
     cout << left << setw(25) << "Course = " << course << endl;
 
-    cout << left << setw(25) << "xpeerience = " << experience << endl;
+    cout << left << setw(25) << "Experience = " << experience << endl;
 
     cout << left << setw(25) << "Salary = " << salary << endl;
 
@@ -142,7 +141,7 @@ void Faculty::loadFromCSV(ifstream &csvInputFile) {
 
 }
 
-void Faculty::setDepartment(string getDepartment) {
+void Faculty::setDepartment(string department) {
     this->department = department;
 }
 
