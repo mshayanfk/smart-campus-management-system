@@ -59,7 +59,7 @@ void Room::input() {
 
     cin.ignore();
 
-    if (!isOccupied) {
+    if (isOccupied) {
         cout << "Enter Occupant Name = ";
         getline(cin, occupantName);
     }
@@ -86,7 +86,7 @@ void Room::display() const {
     cout << "=========================================" << endl;
 }
 
-void Room::saveInCSV(ofstream &csvOutputFile) {
+void Room::saveInCSV(ofstream &csvOutputFile) const {
 
     if (!csvOutputFile.is_open()) {
         throw runtime_error("File not Opened for Writing");
@@ -119,9 +119,25 @@ void Room::loadFromCSV(ifstream &csvInputFile) {
     isOccupied = stoi(temp);
 
     getline(sh, temp, ',');
-    roomRent = stoi(temp);
+    roomRent = stod(temp);
 
     getline(sh, occupantName, ',');
+}
+
+void Room::setData(
+    int roomNumber,
+    string roomType,
+    int capacity,
+    bool isOccupied,
+    double roomRent,
+    string occupantName)
+{
+    this->roomNumber   = roomNumber;
+    this->roomType     = roomType;
+    this->capacity     = capacity;
+    this->isOccupied   = isOccupied;
+    this->roomRent     = roomRent;
+    this->occupantName = occupantName;
 }
 
 void Room::setRoomNumber(int roomNumber) {
@@ -170,4 +186,8 @@ double Room::getRoomRent() const {
 
 string Room::getOccupantName() const {
     return occupantName;
+}
+
+bool Room::matchesRoomNumber(int searchNumber) const {
+    return roomNumber == searchNumber;
 }

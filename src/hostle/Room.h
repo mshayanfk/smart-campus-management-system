@@ -23,8 +23,17 @@ class Room {
     void input();
     void display() const;
 
-    void saveInCSV(ofstream &csvOutputFile);
+    void saveInCSV(ofstream &csvOutputFile) const;
     void loadFromCSV(ifstream &csvInputFile);
+
+     void setData(
+        int roomNumber,
+        string roomType,
+        int capacity,
+        bool isOccupied,
+        double roomRent,
+        string occupantName
+    );
 
     void setRoomNumber(int roomNumber);
     void setRoomType(string roomType);
@@ -39,6 +48,8 @@ class Room {
     bool getOccupied() const;
     double getRoomRent() const;
     string  getOccupantName() const;
+    
+    bool matchesRoomNumber(int searchNumber) const;
     
 };
 

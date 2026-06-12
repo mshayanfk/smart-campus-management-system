@@ -31,7 +31,7 @@ void HostelBlock::input() {
     cout << "Enter Total Rooms = ";
     cin >> totalRooms;
 
-    if (totalRooms < 0) {
+    if (totalRooms <= 0) {
         throw runtime_error("Invalid Number of Rooms");
     }
 }
@@ -95,7 +95,18 @@ void HostelBlock::loadFromCSV(ifstream &csvInputFile) {
     totalRooms = stoi(temp);
 }
 
-void HostelBlock::setBlockName(string getBlockName) {
+void HostelBlock::setData(string blockName, 
+    string wardenName, 
+    int totalRooms
+)
+
+{
+    this->blockName  = blockName;
+    this->wardenName = wardenName;
+    this->totalRooms = totalRooms;
+}
+
+void HostelBlock::setBlockName(string blockName) {
     this->blockName = blockName;
 }
 
@@ -121,4 +132,8 @@ int HostelBlock::getTotalRooms() const {
 
 vector<Room>& HostelBlock::getRooms() {
     return rooms;
+}
+
+bool HostelBlock::matchesBlockName(string searchName) const {
+    return blockName == searchName;
 }

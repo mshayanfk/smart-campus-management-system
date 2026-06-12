@@ -1,5 +1,5 @@
-#ifndef HOSTLEBLOCK_H
-#define HOSTLEBLOCK_H
+#ifndef HOSTELBLOCK_H
+#define HOSTELBLOCK_H
 #include "Room.h"
 
 #include <iostream>
@@ -8,16 +8,16 @@
 #include <vector>
 using namespace std;
 
-class HostelBlock {
-    private:
-
+class HostelBlock
+{
+private:
     string blockName;
     string wardenName;
     int totalRooms;
 
-    vector <Room> rooms;
+    vector<Room> rooms;
 
-    public:
+public:
     HostelBlock();
     ~HostelBlock();
 
@@ -30,15 +30,20 @@ class HostelBlock {
     void saveInCSV(ofstream &csvOutputFile) const;
     void loadFromCSV(ifstream &csvInputFile);
 
+    void setData(string blockName, 
+    string wardenName, 
+    int totalRooms);
+
     void setBlockName(string blockName);
     void setWardenName(string wardenName);
     void setTotalRooms(int totalRooms);
 
-    string  getBlockName() const;
+    string getBlockName() const;
     string getWardenName() const;
     int getTotalRooms() const;
 
-    vector <Room>& getRooms();
+    vector<Room> &getRooms();
 
+    bool matchesBlockName(string searchName) const;
 };
 #endif
