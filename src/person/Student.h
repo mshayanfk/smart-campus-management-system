@@ -30,7 +30,7 @@ class Student : public Person {
     void setRegNo(string registrationNo);
     void setDepartment(string department);
     void setSemester(string semester);
-    void setSecttion(string section);
+    void setSection(string section);
     void setGPA(float gpa);
 
     string getRegNo() const;

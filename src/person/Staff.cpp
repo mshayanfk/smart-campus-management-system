@@ -71,8 +71,7 @@ void Staff::saveInCSV(ofstream &csvOutputFile) {
     << age << "," << contact << ","
     << isActive << "," << type << ","
     << department << "," << role << ","
-     << "," << shift << "," 
-    << salary << "," << endl;
+    << shift << "," << salary << endl;
 }
 
 void Staff::loadFromCSV(ifstream &csvInputFile) {

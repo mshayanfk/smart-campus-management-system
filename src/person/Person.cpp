@@ -1,4 +1,4 @@
-#include <Person.h>
+#include "Person.h"
 
 #include <sstream>
 #include <stdexcept>
@@ -27,8 +27,6 @@ void Person::input() {
 
     cout << "Enter your Age = ";
     cin >> age;
-
-    if (!age) return;
 
     if (age <= 0 || age > 100) {
         throw runtime_error("Age Should be in Between 1 & 100");
