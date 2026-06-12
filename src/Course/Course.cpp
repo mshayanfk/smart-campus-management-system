@@ -123,6 +123,11 @@ string Course::getCourseName() const{
 int Course::getCreditHours() const{
     return creditHours;
 }
+
+string Course::getDepartment() const {
+    return department;
+}
+
 string Course::getSemester() const{
     return semester;
 }
