@@ -24,7 +24,7 @@ void Course::input()
     cout << "Enter the course code";
     getline(cin, courseCode);
 
-    cout << "Rnter the course name ";
+    cout << "Enter the course name ";
     getline(cin, courseName);
     cout << "Enter the credit hours";
     cin >> creditHours;
@@ -36,7 +36,7 @@ void Course::input()
     cin.ignore();
     cout << "Enter the department ";
     getline(cin, department);
-    cout << "Enter the semester seasom ";
+    cout << "Enter the semester season ";
     getline(cin, semester);
     isActive = true;
 }
@@ -45,12 +45,12 @@ void Course::display() const
     cout << "\n=================================\n";
     cout << "           COURSE INFO           \n";
     cout << "=================================\n";
-    cout << left << setw(18) << "course Codde:" << courseCode << "\n";
-    cout << left << setw(18) << "course Name:" << courseName << "\n";
-    cout << left << setw(18) << "credit hours:" << creditHours << "\n";
-    cout << left << setw(18) << "departmnt:" << department << "\n";
-    cout << left << setw(18) << "semester:" << semester << "\n";
-    cout << left << setw(18) << "status:" << (isActive ? "Active" : "Inactive") << "\n";
+    cout << left << setw(18) << "Course Codde:" << courseCode << "\n";
+    cout << left << setw(18) << "Course Name:" << courseName << "\n";
+    cout << left << setw(18) << "Credit hours:" << creditHours << "\n";
+    cout << left << setw(18) << "Departmnt:" << department << "\n";
+    cout << left << setw(18) << "Semester:" << semester << "\n";
+    cout << left << setw(18) << "Status:" << (isActive ? "Active" : "Inactive") << "\n";
     cout << "=================================\n";
 }
 void Course::saveToCSV(ofstream &outputFile){
@@ -99,7 +99,7 @@ void Course::setData(
 void Course::setCourseCode(string courseCode) {
     this->courseCode = courseCode;
 }
-void Course::setCourseName(string CourseName) {
+void Course::setCourseName(string courseName) {
     this->courseName = courseName;
 }
 void Course::setCourseCreditHours(int creditHours) {
