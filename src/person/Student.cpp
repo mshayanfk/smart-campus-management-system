@@ -59,23 +59,17 @@ void Student::display() const {
 
     cout << "========== STUDENT DETAILS ==========" << endl;
 
-    cout << left << setw(25) << 
-    "Registration Number = " << registrationNo << endl;
+    cout << left << setw(25) << "Registration Number = " << registrationNo << endl;
 
-    cout << left << setw(25) <<
-    "Department = " << department << endl;
+    cout << left << setw(25) << "Department = " << department << endl;
 
-    cout << left << setw(25) <<
-    "Semester = " << semester << endl;
+    cout << left << setw(25) << "Semester = " << semester << endl;
 
-    cout << left << setw(25) <<
-    "Section = " << section << endl;
+    cout << left << setw(25) << "Section = " << section << endl;
 
-    cout << left << setw(25) << 
-    "GPA = " << gpa <<  endl;
+    cout << left << setw(25) << "GPA = " << gpa <<  endl;
 
-    cout << left << setw(25) <<
-    "Achievement = " <<  achievement << endl;
+    cout << left << setw(25) << "Achievement = " <<  getAchievement() << endl;
 
     cout << "=================================" << endl;
 

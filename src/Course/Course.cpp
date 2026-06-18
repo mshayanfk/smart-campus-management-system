@@ -21,7 +21,7 @@ Course::~Course()
 void Course::input()
 {
     cout << "\n ==== Enter Course Details ==== \n";
-    cout << "Enter the course code";
+    cout << "Enter the course code" << endl;
     getline(cin, courseCode);
 
     cout << "Enter the course name ";

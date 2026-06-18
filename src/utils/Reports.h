@@ -1,23 +1,16 @@
 #ifndef REPORTS_H
 #define REPORTS_H
 
-#include <iostream>
-#include <vector>
-
-#include "Course.h"
-#include "Enrollment.h"
-
-#include "Book.h"
-#include "Journal.h"
-#include "Library.h"
-
-#include "Room.h"
-#include "HostelBlock.h"
-
-#include "FeeRecord.h"
-#include "Invoice.h"
-
-#include "Person.h"
+#include "../Course/Course.h"
+#include "../Course/Enrollment.h"
+#include "../Library/Book.h"
+#include "../Library/Journal.h"
+#include "../Library/Library.h"
+#include "../hostle/Room.h"
+#include "../hostle/HostelBlock.h"
+#include "../Finance/FeeRecord.h"
+#include "../Finance/Invoice.h"
+#include "../person/Person.h"
 
 using namespace std;
 

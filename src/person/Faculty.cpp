@@ -22,8 +22,6 @@ Faculty::~Faculty() {}
 void Faculty::input() {
     Person::input();
 
-    cin.ignore();
-
     cout << "============================================" << endl;
     cout << "------------ FACULTY INFORMATION -----------" << endl;
     cout << "============================================" << endl;
