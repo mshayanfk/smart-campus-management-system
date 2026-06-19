@@ -24,8 +24,8 @@ class Student : public Person {
     void input() override;
     void display() const override;
 
-    void saveInCSV(std::ofstream &csvOutputFile);
-    void loadFromCSV(std::ifstream &csvInputFile);
+    void saveInCSV(std::ofstream &csvOutputFile) override;
+    void loadFromCSV(std::ifstream &csvInputFile) override;
 
     void setRegNo(string registrationNo);
     void setDepartment(string department);

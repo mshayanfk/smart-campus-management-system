@@ -16,14 +16,12 @@ Student::Student() {
     type = STUDENT;
 }
 
-Student::~Student() {}
+Student::~Student() {
+
+}
 
 void Student::input() {
-
     Person::input();
-
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
 
     cout << "-----------------------------------------" <<  endl;
     cout << "========== ENTER STUDENT DETAILS ========" << endl;
@@ -45,32 +43,30 @@ void Student::input() {
     cin >> gpa;
 
     if (cin.fail()) {
+        cin.clear(); 
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         throw runtime_error("Invalid GPA input");
     }
 
     if (gpa < 0.0 || gpa > 4.0) {
         throw runtime_error("Invalid GPA");
     }
- 
+
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
+
+   
 
 void Student::display() const {
     Person::display();
 
     cout << "========== STUDENT DETAILS ==========" << endl;
-
     cout << left << setw(25) << "Registration Number = " << registrationNo << endl;
-
     cout << left << setw(25) << "Department = " << department << endl;
-
     cout << left << setw(25) << "Semester = " << semester << endl;
-
     cout << left << setw(25) << "Section = " << section << endl;
-
     cout << left << setw(25) << "GPA = " << gpa <<  endl;
-
     cout << left << setw(25) << "Achievement = " <<  getAchievement() << endl;
-
     cout << "=================================" << endl;
 
 }
@@ -84,7 +80,7 @@ void Student::saveInCSV(ofstream &csvOutputFile) {
                   << age << "," << contact << ","
                  << isActive << "," << type << ","
                  << registrationNo << "," << department << ","
-                 << section << "," << gpa << endl;
+                 << semester << "," << section << "," << gpa << endl;
                        
 }
 

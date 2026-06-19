@@ -20,17 +20,28 @@ Person::Person() {
 Person::~Person() {}
 
 void Person::input() {
+    if (cin.peek() == '\n') {
+        cin.ignore();
+    }
+
     cout << "---------- ENTER THE PERSON DETAILS ----------" << endl;
 
-    cout << "Enter Your Name = ";
+    cout << "Enter Your Name = " << endl;
     getline(cin, name);
+
+    if (name.empty()) {
+        getline(cin, name);
+    }
 
     cout << "Enter your Age = ";
     cin >> age;
 
     if (cin.fail()) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         throw runtime_error("Invalid Age Input");
     }
+
 
     if (age <= 0 || age > 100) {
         throw runtime_error("Age Should be in Between 1 & 100");
@@ -38,7 +49,7 @@ void Person::input() {
 
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-    cout << "Enter your Personal Contact Number";
+    cout << "Enter your Personal Contact Number = ";
     getline(cin, contact);
 
     int choice;
@@ -46,13 +57,17 @@ void Person::input() {
     cout << "Enter your Type (0 = Student, 1 = Staff, 2 = Faculty) = ";
     cin >> choice;
 
-    if (choice < 0 || choice > 2) {
+    if (cin.fail() || choice < 0 || choice > 2) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         throw runtime_error("Invalid Person Type Choice");
     }
+
 
     type = (PersonType)choice;
 
     isActive = true;
+
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
 }
