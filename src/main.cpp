@@ -868,3 +868,130 @@ void libraryMenu()
             pause();
     } while (choice != 0);
 }
+
+void hostelMenu()
+{
+    int choice;
+    do
+    {
+        clearScreen();
+        header("HOSTEL MANAGEMENT SYSTEM");
+        cout << GREEN << " [1] Add New Hostel Block\n";
+        cout << " [2] View All Hostel Blocks & Rooms\n";
+        cout << " [3] Search Hostel Block\n";
+        cout << " [4] Remove Hostel Block\n";
+        cout << " [5] Add Room to Hostel Block\n" <<RESET;
+        cout << RED << " [0] Back to Main Meni\n"
+             << RESET;
+        cout << CYAN << "--------------------------------------------------------=" << RESET << endl;
+        choice = getMenuChoice();
+
+        if (choice == 1)
+        {
+            clearScreen();
+            header("Add Hostel Block");
+            HostelBlock block;
+            try
+            {
+                block.input();
+                hostelManager.addBlock(block);
+                cout << GREEN << "\n Hostel Block Added Successfully!\n"
+                     << RESET;
+            }
+            catch (exception &e)
+            {
+                cout << RED << "Error: " << e.what() << RESET << endl;
+            }
+        }
+        else if (choice == 2)
+        {
+            clearScreen();
+            header("View Hostel Blocks");
+            vector<HostelBlock> &blocks = hostelManager.getBlocks();
+            if (blocks.empty())
+            {
+                cout << YELLOW << "No Hostel Blocks Available 👊\n"
+                     << RESET;
+            }
+            else
+            {
+                for (HostelBlock &block : blocks)
+                {
+                    cout << "\n"
+                         << BOLD << MAGENTA << "Hostel Block Details:" << RESET << endl;
+                    block.display();
+                    cout << YELLOW << "Rooms in this Block:" << RESET << endl;
+                    block.displayRooms();
+                    cout << CYAN << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+                         << RESET;
+                }
+            }
+        }
+        else if (choice == 3)
+        {
+            clearScreen();
+            header("Search Hostel Block");
+            cout << "Enter Block Name: ";
+            string name;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            getline(cin, name);
+            hostelManager.searchBlock(name);
+        }
+        else if (choice == 4)
+        {
+            clearScreen();
+            header("Delete Hostel Block");
+            cout << "Enter Block Name to Delete: ";
+            string name;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            getline(cin, name);
+            hostelManager.removeBlock(name);
+        }
+        else if (choice == 5)
+        {
+            clearScreen();
+            header("Add Room to Hostel Block");
+            vector<HostelBlock> &blocks = hostelManager.getBlocks();
+            if (blocks.empty())
+            {
+                cout << RED << "No Hostel Block exist. Create a Block First\n" << RESET;
+            }
+            else
+            {
+                cout << "Enter Block Name: ";
+                string name;
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                getline(cin, name);
+
+                bool found = false;
+                for (HostelBlock &block : blocks)
+                {
+                    if (block.getBlockName() == name)
+                    {
+                        Room room;
+                        try
+                        {
+                            room.input();
+                            block.addRoom(room);
+                            cout << GREEN << "\n Room Added Successfully!\n"
+                                 << RESET;
+                        }
+                        catch (exception &e)
+                        {
+                            cout << RED << "Error Occured: " << e.what() << RESET << endl;
+                        }
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found)
+                    cout << RED << "Hostel Block Not Found.\n"
+                         << RESET;
+            }
+        }
+
+        if (choice != 0)
+            pause();
+    } 
+    while (choice != 0);
+}
