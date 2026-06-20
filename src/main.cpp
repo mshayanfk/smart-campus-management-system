@@ -880,7 +880,8 @@ void hostelMenu()
         cout << " [2] View All Hostel Blocks & Rooms\n";
         cout << " [3] Search Hostel Block\n";
         cout << " [4] Remove Hostel Block\n";
-        cout << " [5] Add Room to Hostel Block\n" <<RESET;
+        cout << " [5] Add Room to Hostel Block\n"
+             << RESET;
         cout << RED << " [0] Back to Main Meni\n"
              << RESET;
         cout << CYAN << "--------------------------------------------------------=" << RESET << endl;
@@ -954,7 +955,8 @@ void hostelMenu()
             vector<HostelBlock> &blocks = hostelManager.getBlocks();
             if (blocks.empty())
             {
-                cout << RED << "No Hostel Block exist. Create a Block First\n" << RESET;
+                cout << RED << "No Hostel Block exist. Create a Block First\n"
+                     << RESET;
             }
             else
             {
@@ -992,6 +994,427 @@ void hostelMenu()
 
         if (choice != 0)
             pause();
-    } 
-    while (choice != 0);
+    } while (choice != 0);
 }
+
+void financeMenu()
+{
+    int choice;
+    do
+    {
+        clearScreen();
+        header("FINANCE MANAGEMENT SYSTEM");
+
+        cout << " [1] Add Fee Record\n";
+        cout << " [2] View All Fee Records\n";
+        cout << " [3] Search Fee Records by Student ID\n";
+        cout << " [4] Delete Fee Record\n";
+        cout << " [5] Generate Invoice\n";
+        cout << " [6] View All Invoices\n";
+        cout << " [7] Print Invoice Receipt\n";
+        cout << " [8] Delete Invoice\n";
+        cout << RED << " [0] Return to Main Menu\n"
+             << RESET;
+
+        cout << CYAN << "--------------------------------------------------------=" << RESET << endl;
+        choice = getMenuChoice();
+
+        if (choice == 1)
+        {
+            clearScreen();
+            header("Add Fee Record");
+            FeeRecord f;
+
+            try
+            {
+                f.input();
+                fees.push_back(f);
+
+                cout << GREEN << "\nFee record added successfully.\n"
+                     << RESET;
+            }
+            catch (exception &e)
+            {
+                cout << RED << "Error: " << e.what() << RESET << endl;
+            }
+        }
+
+        else if (choice == 2)
+        {
+            clearScreen();
+            header("Fee Records");
+
+            Reports::generateFeeReport(fees);
+        }
+
+        else if (choice == 3)
+        {
+            clearScreen();
+            header("Search Fee Records");
+
+            cout << "Enter Student ID: ";
+            int sid;
+            cin >> sid;
+
+            bool found = false;
+
+            for (FeeRecord &f : fees)
+            {
+                if (f.matchesStudentID(sid))
+                {
+                    f.display();
+                    found = true;
+                }
+            }
+
+            if (!found)
+            {
+                cout << RED << "No fee record found for this student.\n"
+                     << RESET;
+            }
+        }
+
+        else if (choice == 4)
+        {
+            clearScreen();
+            header("Delete Fee Record");
+
+            cout << "Enter Fee Record ID: ";
+            int fid;
+            cin >> fid;
+
+            bool found = false;
+
+            for (size_t i = 0; i < fees.size(); i++)
+            {
+                if (fees[i].matchesFeeID(fid))
+                {
+                    fees.erase(fees.begin() + i);
+
+                    cout << GREEN << "Fee record deleted successfully.\n"
+                         << RESET;
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                cout << RED << "Fee record not found.\n"
+                     << RESET;
+            }
+        }
+
+        else if (choice == 5)
+        {
+            clearScreen();
+            header("Generate Invoice");
+
+            cout << "Enter Fee Record ID: ";
+            int fid;
+            cin >> fid;
+
+            bool found = false;
+
+            for (FeeRecord &f : fees)
+            {
+                if (f.matchesFeeID(fid))
+                {
+                    Invoice inv;
+
+                    int invID;
+                    string date;
+
+                    cout << "Enter Invoice ID: ";
+                    cin >> invID;
+
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+                    cout << "Enter Date (DD-MM-YYYY): ";
+                    getline(cin, date);
+
+                    inv.setInvoiceID(invID);
+                    inv.setIssueDate(date);
+                    inv.generateInvoice(f);
+
+                    invoices.push_back(inv);
+
+                    cout << GREEN << "\nInvoice generated successfully.\n"
+                         << RESET;
+
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                cout << RED << "Fee record not found.\n"
+                     << RESET;
+            }
+        }
+
+        else if (choice == 6)
+        {
+            clearScreen();
+            header("All Invoices");
+
+            Reports::generateInvoiceReport(invoices);
+        }
+
+        else if (choice == 7)
+        {
+            clearScreen();
+            header("Print Invoice");
+
+            cout << "Enter Invoice ID: ";
+            int invID;
+            cin >> invID;
+
+            bool found = false;
+
+            for (Invoice &inv : invoices)
+            {
+                if (inv.getInvoiceID() == invID)
+                {
+                    cout << "\n================ INVOICE =================\n";
+                    inv.printReceipt();
+                    cout << "=========================================\n";
+
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                cout << RED << "Invoice not found.\n"
+                     << RESET;
+            }
+        }
+
+        else if (choice == 8)
+        {
+            clearScreen();
+            header("Delete Invoice");
+
+            cout << "Enter Invoice ID: ";
+            int invID;
+            cin >> invID;
+
+            bool found = false;
+
+            for (size_t i = 0; i < invoices.size(); i++)
+            {
+                if (invoices[i].getInvoiceID() == invID)
+                {
+                    invoices.erase(invoices.begin() + i);
+
+                    cout << GREEN << "Invoice deleted successfully.\n"
+                         << RESET;
+
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                cout << RED << "Invoice not found.\n"
+                     << RESET;
+            }
+        }
+
+        if (choice != 0)
+            pause();
+
+    } while (choice != 0);
+}
+
+
+void reportsMenu()
+{
+    int choice;
+
+    do
+    {
+        clearScreen();
+        header("REPORTS AND DATA ANALYSIS");
+
+        cout << " [1] Generate Person Report\n";
+        cout << " [2] Generate Course Report\n";
+        cout << " [3] Generate Enrollment Report\n";
+        cout << " [4] Generate Library Book Report\n";
+        cout << " [5] Generate Journal Report\n";
+        cout << " [6] Generate Hostel Report\n";
+        cout << " [7] Generate Fee Report\n";
+        cout << " [8] Generate Invoice Report\n";
+        cout << " [9] View System Summary\n";
+        cout << RED << " [0] Return to Main Menu\n" << RESET;
+
+        cout << CYAN << "--------------------------------------------------------=" << RESET << endl;
+
+        choice = getMenuChoice();
+
+        clearScreen();
+
+        if (choice == 1)
+        {
+            header("Person Report");
+            Reports::generatePersonReport(persons);
+        }
+        else if (choice == 2)
+        {
+            header("Course Report");
+            Reports::generateCourseReport(courses);
+        }
+        else if (choice == 3)
+        {
+            header("Enrollment Report");
+            Reports::generateEnrollmentReport(enrollments);
+        }
+        else if (choice == 4)
+        {
+            header("Book Inventory Report");
+            Reports::generateBookReport(books);
+        }
+        else if (choice == 5)
+        {
+            header("Journal Report");
+            Reports::generateJournalReport(journals);
+        }
+        else if (choice == 6)
+        {
+            header("Hostel Report");
+            Reports::generateHostelBlockReport(hostelManager.getBlocks());
+        }
+        else if (choice == 7)
+        {
+            header("Fee Report");
+            Reports::generateFeeReport(fees);
+        }
+        else if (choice == 8)
+        {
+            header("Invoice Report");
+            Reports::generateInvoiceReport(invoices);
+        }
+        else if (choice == 9)
+        {
+            header("System Summary");
+
+            int totalRooms = 0;
+
+            for (HostelBlock &block : hostelManager.getBlocks())
+            {
+                totalRooms += block.getRooms().size();
+            }
+
+            cout << "\n--- System Overview ---\n\n";
+
+            cout << "Total Persons       : " << persons.size() << "\n";
+            cout << "Total Courses       : " << courses.size() << "\n";
+            cout << "Total Enrollments   : " << enrollments.size() << "\n";
+            cout << "Total Hostel Blocks : " << hostelManager.getBlocks().size() << "\n";
+            cout << "Total Rooms         : " << totalRooms << "\n";
+            cout << "Total Books         : " << books.size() << "\n";
+            cout << "Total Journals      : " << journals.size() << "\n";
+            cout << "Total Fee Records   : " << fees.size() << "\n";
+            cout << "Total Invoices      : " << invoices.size() << "\n";
+
+            cout << "----------------------------------------\n";
+        }
+
+        if (choice != 0)
+            pause();
+
+    } while (choice != 0);
+}
+
+void mainMenu()
+{
+    int choice;
+
+    do
+    {
+        clearScreen();
+
+        cout << BOLD << CYAN << "=========================================================\n" << RESET;
+        cout << BOLD << GREEN << "           SMART CAMPUS MANAGEMENT SYSTEM               \n" << RESET;
+        cout << BOLD << CYAN << "=========================================================\n" << RESET;
+
+        cout << BOLD << "  [1]" << RESET << " Academic Management\n";
+        cout << BOLD << "  [2]" << RESET << " Personnel Management\n";
+        cout << BOLD << "  [3]" << RESET << " Library Management\n";
+        cout << BOLD << "  [4]" << RESET << " Hostel Management\n";
+        cout << BOLD << "  [5]" << RESET << " Finance Management\n";
+        cout << BOLD << "  [6]" << RESET << " Reports & Analytics\n";
+        cout << RED  << "  [0] Exit System\n" << RESET;
+
+        cout << BOLD << CYAN << "=========================================================\n" << RESET;
+
+        choice = getMenuChoice();
+
+        if (choice == 1)
+            academicMenu();
+        else if (choice == 2)
+            personnelMenu();
+        else if (choice == 3)
+            libraryMenu();
+        else if (choice == 4)
+            hostelMenu();
+        else if (choice == 5)
+            financeMenu();
+        else if (choice == 6)
+            reportsMenu();
+        else if (choice == 0)
+        {
+            clearScreen();
+            header("SYSTEM SHUTDOWN");
+            cout << YELLOW << "Saving all data to files...\n" << RESET;
+        }
+        else
+        {
+            cout << RED << "Invalid choice. Please try again.\n" << RESET;
+            pause();
+        }
+
+    } while (choice != 0);
+}
+
+int main()
+{
+    cout << unitbuf;
+
+    loadAllData();
+
+    mainMenu();
+
+    saveAllData();
+    cleanPersons();
+
+    cout << GREEN << "System closed successfully.\n" << RESET;
+
+    return 0;
+}
+
+#include "Course/Course.cpp"
+#include "Course/Enrollment.cpp"
+
+#include "person/Person.cpp"
+#include "person/Student.cpp"
+#include "person/Faculty.cpp"
+#include "person/Staff.cpp"
+
+#include "Library/LibraryItem.cpp"
+#include "Library/Library.cpp"
+#include "Library/Book.cpp"
+#include "Library/Journal.cpp"
+
+#include "hostle/Room.cpp"
+#include "hostle/HostelBlock.cpp"
+#include "hostle/HostelManager.cpp"
+
+#include "Finance/FeeRecord.cpp"
+#include "Finance/Invoice.cpp"
+
+#include "utils/Reports.cpp"
