@@ -557,3 +557,151 @@ void academicMenu()
             pause();
     } while (choice != 0);
 }
+
+// For the Personnel Menu here
+void personnelMenu()
+{
+    int choice;
+    do
+    {
+        clearScreen();
+        header("PERSONNEL MANAGEMENT SYSTEM");
+        cout << GREEN << " [1] Add New Personnel Record (Student/Faculty/Staff)\n";
+        cout << " [2] View All Personnel\n";
+        cout << " [3] Search by ID\n";
+        cout << " [4] Delete Personnel Record\n" << RESET;
+        cout << RED << " [0] Return to Main Menu\n"
+             << RESET;
+        cout << CYAN << "--------------------------------------------------------=" << RESET << endl;
+        choice = getMenuChoice();
+
+        if (choice == 1)
+        {
+            clearScreen();
+            header("Add New Personnel Record");
+            cout << YELLOW << "Select Personnel Type:\n"
+                 << RESET;
+            cout << " [0] Student\n"
+                 << " [1] Faculty\n"
+                 << " [2] Staff\n\n";
+            cout << " Enter your choice (0-2): ";
+            int typeChoice;
+            cin >> typeChoice;
+
+            if (cin.fail() || typeChoice < 0 || typeChoice > 2)
+            {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << RED << "😠 Invalid Choice. Please Try Again\n"
+                     << RESET;
+                pause();
+                continue;
+            }
+
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+            Person *p = nullptr;
+            if (typeChoice == 0)
+                p = new Student();
+            else if (typeChoice == 1)
+                p = new Faculty();
+            else if (typeChoice == 2)
+                p = new Staff();
+
+            if (p != nullptr)
+            {
+                try
+                {
+                    p->input();
+                    persons.push_back(p);
+                    cout << GREEN << "\n☑️ Record Added Successfully!\n"
+                         << RESET;
+                }
+                catch (exception &e)
+                {
+                    cout << RED << "Runtime Allocation Error: " << e.what() << RESET << endl;
+                    delete p;
+                }
+            }
+        }
+        else if (choice == 2)
+        {
+            clearScreen();
+            header("All Personnel Records");
+            if (persons.empty())
+            {
+                cout << YELLOW << "😞 No Personnel Records Found.\n"
+                     << RESET;
+            }
+            else
+            {
+                cout << BOLD << GREEN << "Personnel Records:\n"
+                     << RESET;
+                cout << "=========================================================\n";
+                for (Person *p : persons)
+                {
+                    if (p)
+                    {
+                        p->display();
+                        cout << CYAN << "---------------------------------------------------------\n"
+                             << RESET;
+                    }
+                }
+            }
+        }
+        else if (choice == 3)
+        {
+            clearScreen();
+            header("Search Personnel Record");
+            cout << "Enter Personnel ID: ";
+            int id;
+            cin >> id;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+            bool found = false;
+            for (Person *p : persons)
+            {
+                if (p && p->matchesID(id))
+                {
+                    cout << "\n"
+                         << GREEN << "😎 Record Found:" << RESET << "\n";
+                    p->display();
+                    found = true;
+                }
+            }
+            if (!found)
+                cout << RED << "💔 Record Not Found\n"
+                     << RESET;
+        }
+        else if (choice == 4)
+        {
+            clearScreen();
+            header("Delete Personnel Record");
+            cout << "Enter ID to Delete: ";
+            int id;
+            cin >> id;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+            bool found = false;
+            for (size_t i = 0; i < persons.size(); i++)
+            {
+                if (persons[i] && persons[i]->matchesID(id))
+                {
+                    delete persons[i];
+                    persons.erase(persons.begin() + i);
+                    cout << GREEN << "🥳 Record Deleted Successfully.\n"
+                         << RESET;
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+                cout << RED << "❌ Record Not Found.\n"
+                     << RESET;
+        }
+
+        if (choice != 0)
+            pause();
+    } while (choice != 0);
+}
+
