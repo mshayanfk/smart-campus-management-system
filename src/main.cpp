@@ -29,6 +29,7 @@
 
 #include "Finance/FeeRecord.h"
 #include "Finance/Invoice.h"
+#include "utils/Reports.h"
 
 // Header files for the Course Folder
 
@@ -46,7 +47,7 @@ const string MAGENTA = "\033[35m";
 
 vector<Course> courses;
 vector<Enrollment> enrollments;
-vector<Person*> persons;
+vector<Person *> persons;
 vector<Book> books;
 vector<Journal> journals;
 HostelManager hostelManager;
@@ -64,7 +65,8 @@ const string HOSTEL_FILE = "hostel_blocks.csv";
 const string FEE_FILE = "fees.csv";
 const string INVOICE_FILE = "invoices.csv";
 
-void clearScreen() {
+void clearScreen()
+{
 #ifdef _WIN32
     system("cls");
 
@@ -73,24 +75,28 @@ void clearScreen() {
 #endif
 }
 
-void header(string title) {
+void header(string title)
+{
     cout << YELLOW << "===========================================" << RESET << endl;
     cout << BOLD << CYAN << " " << title << RESET << endl;
     cout << YELLOW << "===========================================" << RESET << endl;
 }
 
-void pause() {
+void pause()
+{
     cout << " " << GREEN << "Press Enter to Continue...." << RESET;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin.get();
 }
 
-int getMenuChoice() {
+int getMenuChoice()
+{
     int choice;
     cout << BOLD << GREEN << "Enter your Selection = " << RESET;
     cin >> choice;
 
-    if (cin.fail()) {
+    if (cin.fail())
+    {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         return -1;
@@ -101,26 +107,34 @@ int getMenuChoice() {
 // Loading all the data from the CSV Files
 
 // Loading the Courses and Enrollment Files
-void loadCourses() {
+void loadCourses()
+{
     ifstream file(COURSE_FILE);
-    if(!file.is_open()) return;
-    while(file.peek() != EOF && file.good()) {
+    if (!file.is_open())
+        return;
+    while (file.peek() != EOF && file.good())
+    {
         Course c;
         c.loadFromCSV(file);
-        if(!file.fail()) {
+        if (!file.fail())
+        {
             courses.push_back(c);
         }
     }
 }
 
-void loadEnrollments() {
+void loadEnrollments()
+{
     ifstream file(ENROLLMENT_FILE);
 
-    if(!file.is_open()) return;
-    while(file.peek() != EOF && file.good()) {
+    if (!file.is_open())
+        return;
+    while (file.peek() != EOF && file.good())
+    {
         Enrollment e;
         e.loadFromCSV(file);
-        if (!file.fail()) {
+        if (!file.fail())
+        {
             enrollments.push_back(e);
         }
     }
@@ -128,105 +142,137 @@ void loadEnrollments() {
 
 // Loading All the Person files including Student, Staff and Faculty
 
-void loadPersons() {
-    for(Person* p : persons) delete p;
+void loadPersons()
+{
+    for (Person *p : persons)
+        delete p;
     persons.clear();
 
     ifstream sFile(STUDENT_FILE);
-    if (sFile.is_open()) {
-    while(sFile.peek() != EOF && sFile.good()) {
-        Student* s = new Student();
-        s->loadFromCSV(sFile);
+    if (sFile.is_open())
+    {
+        while (sFile.peek() != EOF && sFile.good())
+        {
+            Student *s = new Student();
+            s->loadFromCSV(sFile);
 
-        if (!sFile.fail()) persons.push_back(s);
-        else delete s;
-       }
-       sFile.close();
+            if (!sFile.fail())
+                persons.push_back(s);
+            else
+                delete s;
+        }
+        sFile.close();
     }
 
-
-
     ifstream fFile(FACULTY_FILE);
-    if (fFile.is_open()) {
-        while(fFile.peek() != EOF && fFile.good()) {
-            Faculty* f = new Faculty();
+    if (fFile.is_open())
+    {
+        while (fFile.peek() != EOF && fFile.good())
+        {
+            Faculty *f = new Faculty();
             f->loadFromCSV(fFile);
-            if (fFile.fail()) persons.push_back(f);
-            else delete f;
+            if (fFile.fail())
+                persons.push_back(f);
+            else
+                delete f;
         }
 
         fFile.close();
     }
 
-
     ifstream stFile(STAFF_FILE);
-    if (stFile.is_open()) {
-        while(stFile.peek() != EOF && stFile.good()) {
-            Staff* st = new Staff();
+    if (stFile.is_open())
+    {
+        while (stFile.peek() != EOF && stFile.good())
+        {
+            Staff *st = new Staff();
             st->loadFromCSV(stFile);
-            if (stFile.fail()) persons.push_back(st);
-            else delete st;
+            if (stFile.fail())
+                persons.push_back(st);
+            else
+                delete st;
         }
         stFile.close();
     }
 }
 
 // Loading the Library Files
-void loadBooks() {
+void loadBooks()
+{
     ifstream file(BOOK_FILE);
-    if(!file.is_open()) return;
-    while(file.peek() != EOF && file.good()) {
+    if (!file.is_open())
+        return;
+    while (file.peek() != EOF && file.good())
+    {
         Book b;
         b.loadFromCSV(file);
-        if(!file.fail()) books.push_back(b);
+        if (!file.fail())
+            books.push_back(b);
     }
 }
 
-void loadJournals() {
+void loadJournals()
+{
     ifstream file(JOURNAL_FILE);
-    if(!file.is_open()) return;
-    while(file.peek() != EOF && file.good()) {
+    if (!file.is_open())
+        return;
+    while (file.peek() != EOF && file.good())
+    {
         Journal j;
         j.loadFromCSV(file);
-        if (!file.fail()) journals.push_back(j);
+        if (!file.fail())
+            journals.push_back(j);
     }
 }
 
 // Loading Hostel Files
 
-void loadHostelBlocks() {
+void loadHostelBlocks()
+{
     ifstream file(HOSTEL_FILE);
-    if(!file.is_open()) return;
-    while(file.peek() != EOF && file.good()) {
+    if (!file.is_open())
+        return;
+    while (file.peek() != EOF && file.good())
+    {
         HostelBlock block;
         block.loadFromCSV(file);
-        if(!file.fail()) hostelManager.addBlock(block);
+        if (!file.fail())
+            hostelManager.addBlock(block);
     }
 }
 
 // Loading Fees & Invoices
 
-void loadFees() {
+void loadFees()
+{
     ifstream file(FEE_FILE);
-    if(!file.is_open()) return;
-    while(file.peek() != EOF && file.good()) {
+    if (!file.is_open())
+        return;
+    while (file.peek() != EOF && file.good())
+    {
         FeeRecord f;
         f.loadFromCSV(file);
-        if (!file.fail()) fees.push_back(f);
+        if (!file.fail())
+            fees.push_back(f);
     }
 }
 
-void loadInvoices() {
+void loadInvoices()
+{
     ifstream file(INVOICE_FILE);
-    if(!file.is_open()) return;
-    while(file.peek() != EOF && file.good()) {
+    if (!file.is_open())
+        return;
+    while (file.peek() != EOF && file.good())
+    {
         Invoice in;
         in.loadFromCSV(file);
-        if (!file.fail()) invoices.push_back(in);
+        if (!file.fail())
+            invoices.push_back(in);
     }
 }
 
-void loadAllData() {
+void loadAllData()
+{
     loadCourses();
     loadEnrollments();
     loadPersons();
@@ -240,86 +286,100 @@ void loadAllData() {
 // Now Saving all the Data
 // Saving the Course Files
 
-void saveCourses() {
+void saveCourses()
+{
     ofstream file(COURSE_FILE);
-    for(Course &c : courses)
-    c.saveToCSV(file);
+    for (Course &c : courses)
+        c.saveToCSV(file);
 }
 
-void saveEnrollments() {
+void saveEnrollments()
+{
     ofstream file(ENROLLMENT_FILE);
-    for(Enrollment &e : enrollments)
-    e.saveToCSV(file);
+    for (Enrollment &e : enrollments)
+        e.saveToCSV(file);
 }
 
 // For the Person (Staff, Student, Faculty ) ones
 
-void savePersons() {
+void savePersons()
+{
     ofstream sFile(STUDENT_FILE);
     ofstream stFile(STAFF_FILE);
     ofstream fFile(FACULTY_FILE);
 
-    for (Person* p : persons) {
-        if (!p) continue;
+    for (Person *p : persons)
+    {
+        if (!p)
+            continue;
 
-        Student* s = dynamic_cast<Student*>(p);
-        if (s) {
+        Student *s = dynamic_cast<Student *>(p);
+        if (s)
+        {
             s->saveInCSV(sFile);
             continue;
         }
 
-        Faculty* f = dynamic_cast<Faculty*>(p);
-        if (f) {
+        Faculty *f = dynamic_cast<Faculty *>(p);
+        if (f)
+        {
             s->saveInCSV(fFile);
             continue;
         }
 
-        Staff * st = dynamic_cast<Staff *>(p);
-        if (st) {
+        Staff *st = dynamic_cast<Staff *>(p);
+        if (st)
+        {
             st->saveInCSV(stFile);
             continue;
         }
     }
-
 }
 
 // For Books
 
-void saveBooks() {
+void saveBooks()
+{
     ofstream file(BOOK_FILE);
-    for(Book &b : books)
-    b.saveToCSV(file);
+    for (Book &b : books)
+        b.saveToCSV(file);
 }
 
-void saveJournals() {
+void saveJournals()
+{
     ofstream file(JOURNAL_FILE);
     for (Journal &j : journals)
-    j.saveToCSV(file);
+        j.saveToCSV(file);
 }
 
 // For Hostel
 
-void saveHostelBlocks() {
+void saveHostelBlocks()
+{
     ofstream file(HOSTEL_FILE);
-    for(HostelBlock &block : hostelManager.getBlocks()) {
+    for (HostelBlock &block : hostelManager.getBlocks())
+    {
         block.saveInCSV(file);
     }
 }
 
-// For Fee Records 
-void saveFees() {
+// For Fee Records
+void saveFees()
+{
     ofstream file(FEE_FILE);
     for (FeeRecord &f : fees)
-    f.saveInCSV(file);
+        f.saveInCSV(file);
 }
 
-void saveInvoices() {
+void saveInvoices()
+{
     ofstream file(INVOICE_FILE);
     for (Invoice &in : invoices)
-    in.saveInCSV(file);
+        in.saveInCSV(file);
 }
 
-void saveAllData() {
+void saveAllData()
+{
     saveCourses();
     saveEnrollments();
     savePersons();
@@ -329,9 +389,171 @@ void saveAllData() {
     saveFees();
     saveInvoices();
 }
- 
-void cleanPersons() {
-    for(Person*p : persons)
-    delete p;
+
+void cleanPersons()
+{
+    for (Person *p : persons)
+        delete p;
     persons.clear();
+}
+// For Acedemic System
+void academicMenu()
+{
+    int choice;
+    do
+    {
+        clearScreen();
+        header("ACADEMIC MANAGEMENT SYSTEMS");
+        cout << GREEN << " [1] Add Course\n";
+        cout << " [2] View All Courses\n";
+        cout << " [3] Search Course by Code\n";
+        cout << " [4] Delete Course by Code\n";
+        cout << " [5] Add Enrollment\n";
+        cout << " [6] View All Enrollments\n";
+        cout << " [7] Search Enrollment by Student ID\n";
+        cout << " [8] Delete Enrollment by ID\n"
+             << RESET;
+        cout << RED << " [0] Return to Main Terminal\n"
+             << RESET;
+        cout << CYAN << "--------------------------------------------------------=" << RESET << endl;
+        choice = getMenuChoice();
+
+        if (choice == 1)
+        {
+            clearScreen();
+            header("Add New Course Structure");
+            Course c;
+            try
+            {
+                c.input();
+                courses.push_back(c);
+                cout << GREEN << "\nCourse registered successfully\n"
+                     << RESET;
+            }
+            catch (exception &e)
+            {
+                cout << RED << "Error: " << e.what() << RESET << endl;
+            }
+        }
+        else if (choice == 2)
+        {
+            clearScreen();
+            header("Master Course Directory");
+            Reports::generateCourseReport(courses);
+        }
+        else if (choice == 3)
+        {
+            clearScreen();
+            header("Find Active Course Code");
+            cout << "Enter target Course Code: ";
+            string code;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            getline(cin, code);
+            bool found = false;
+            for (Course &c : courses)
+            {
+                if (c.matchesCode(code))
+                {
+                    c.display();
+                    found = true;
+                }
+            }
+            if (!found)
+                cout << RED << "Active profile code matching reference not found.\n"
+                     << RESET;
+        }
+        else if (choice == 4)
+        {
+            clearScreen();
+            header("Purge Course Matrix Entry");
+            cout << "Enter Course Code to delete: ";
+            string code;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            getline(cin, code);
+            bool found = false;
+            for (size_t i = 0; i < courses.size(); i++)
+            {
+                if (courses[i].matchesCode(code))
+                {
+                    courses.erase(courses.begin() + i);
+                    cout << GREEN << "Target entry systematically cleared.\n"
+                         << RESET;
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+                cout << RED << "Match not found.\n"
+                     << RESET;
+        }
+        else if (choice == 5)
+        {
+            clearScreen();
+            header("Establish Student Enrollment Link");
+            Enrollment e;
+            try
+            {
+                e.input();
+                enrollments.push_back(e);
+                cout << GREEN << "\n Enrollment registered successfully\n"
+                     << RESET;
+            }
+            catch (exception &ex)
+            {
+                cout << RED << "Registration Blocked: " << ex.what() << RESET << endl;
+            }
+        }
+        else if (choice == 6)
+        {
+            clearScreen();
+            header("Current Academic Enrollments");
+            Reports::generateEnrollmentReport(enrollments);
+        }
+        else if (choice == 7)
+        {
+            clearScreen();
+            header("Track Enrollments via Student ID");
+            cout << "Enter Numeric Student ID: ";
+            int sid;
+            cin >> sid;
+            bool found = false;
+            for (Enrollment &e : enrollments)
+            {
+                if (e.matchesStudentId(sid))
+                {
+                    e.display();
+                    found = true;
+                }
+            }
+            if (!found)
+                cout << RED << "No active link data found under tracking ID.\n"
+                     << RESET;
+        }
+        else if (choice == 8)
+        {
+            clearScreen();
+            header("Terminate Enrollment Registry");
+            cout <<"Enter unique Enrollment ID to drop: ";
+            int eid;
+            cin >> eid;
+            bool found = false;
+            for (size_t i = 0; i < enrollments.size(); i++)
+            {
+                if (enrollments[i].matchesEnrollmentId(eid))
+                {
+                    enrollments.erase(enrollments.begin() + i);
+                    cout << GREEN << "Student trace purged from class matrix.\n"
+                         << RESET;
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+                cout << RED << "Link ID trace not registered.\n"
+                     << RESET;
+        }
+
+        if (choice != 0)
+            pause();
+    } while (choice != 0);
 }
