@@ -438,13 +438,13 @@ void academicMenu()
         else if (choice == 2)
         {
             clearScreen();
-            header("Master Course Directory");
+            header("View Course Directory");
             Reports::generateCourseReport(courses);
         }
         else if (choice == 3)
         {
             clearScreen();
-            header("Find Active Course Code");
+            header("Find  Course Code");
             cout << "Enter target Course Code: ";
             string code;
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -465,7 +465,7 @@ void academicMenu()
         else if (choice == 4)
         {
             clearScreen();
-            header("Purge Course Matrix Entry");
+            header("Delete Course Entry");
             cout << "Enter Course Code to delete: ";
             string code;
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -489,7 +489,7 @@ void academicMenu()
         else if (choice == 5)
         {
             clearScreen();
-            header("Establish Student Enrollment Link");
+            header("Add Student Enrollment Link");
             Enrollment e;
             try
             {
@@ -506,13 +506,13 @@ void academicMenu()
         else if (choice == 6)
         {
             clearScreen();
-            header("Current Academic Enrollments");
+            header("View Academic Enrollments");
             Reports::generateEnrollmentReport(enrollments);
         }
         else if (choice == 7)
         {
             clearScreen();
-            header("Track Enrollments via Student ID");
+            header("Track Enrollment with Student ID");
             cout << "Enter Numeric Student ID: ";
             int sid;
             cin >> sid;
@@ -532,8 +532,8 @@ void academicMenu()
         else if (choice == 8)
         {
             clearScreen();
-            header("Terminate Enrollment Registry");
-            cout <<"Enter unique Enrollment ID to drop: ";
+            header("Delete Enrollment Registry");
+            cout << "Enter unique Enrollment ID to drop: ";
             int eid;
             cin >> eid;
             bool found = false;
@@ -569,7 +569,8 @@ void personnelMenu()
         cout << GREEN << " [1] Add New Personnel Record (Student/Faculty/Staff)\n";
         cout << " [2] View All Personnel\n";
         cout << " [3] Search by ID\n";
-        cout << " [4] Delete Personnel Record\n" << RESET;
+        cout << " [4] Delete Personnel Record\n"
+             << RESET;
         cout << RED << " [0] Return to Main Menu\n"
              << RESET;
         cout << CYAN << "--------------------------------------------------------=" << RESET << endl;
@@ -704,4 +705,166 @@ void personnelMenu()
             pause();
     } while (choice != 0);
 }
+// library meanu
+void libraryMenu()
+{
+    int choice;
+    do
+    {
+        clearScreen();
+        header("LIBRARY MANAGMENT SYSTEM");
+        cout << GREEN << " [1] Print New Book\n";
+        cout << " [2] View Full Book Catalog\n";
+        cout << " [3] Look up Book by Author Profile\n";
+        cout << " [4] Delete Book Entry \n";
+        cout << " [5] Register Research Journal Asset\n";
+        cout << " [6] View Research Journal Inventory\n";
+        cout << " [7] Find Journals with Title Query\n";
+        cout << " [8] Delete Journal Entry with Title Reference\n"
+             << RESET;
+        cout << RED << " [0] Return to Main Terminal\n"
+             << RESET;
+        cout << CYAN << "--------------------------------------------------------=" << RESET << endl;
+        choice = getMenuChoice();
 
+        if (choice == 1)
+        {
+            clearScreen();
+            header("Book Form Created");
+            Book b;
+            try
+            {
+                b.input();
+                books.push_back(b);
+                cout << GREEN << "\n Book asset successfully Added\n"
+                     << RESET;
+            }
+            catch (exception &e)
+            {
+                cout << RED << "Error: " << e.what() << RESET << endl;
+            }
+        }
+        else if (choice == 2)
+        {
+            clearScreen();
+            header("Available Books Assets");
+            Reports::generateBookReport(books);
+        }
+        else if (choice == 3)
+        {
+            clearScreen();
+            header("Look Up Books via Aurthor Profile");
+            cout << "Enter complete Author name : ";
+            string author;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            getline(cin, author);
+            bool found = false;
+            for (Book &b : books)
+            {
+                if (b.matchesAuthor(author))
+                {
+                    b.display();
+                    found = true;
+                }
+            }
+            if (!found)
+                cout << RED << " Catalog contains no tracks of field value.\n"
+                     << RESET;
+        }
+        else if (choice == 4)
+        {
+            clearScreen();
+            header("Del Book Index");
+            cout << "Enter target Book Number: ";
+            string isbn;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            getline(cin, isbn);
+            bool found = false;
+            for (size_t i = 0; i < books.size(); i++)
+            {
+                if (books[i].matchesISBN(isbn))
+                {
+                    books.erase(books.begin() + i);
+                    cout << GREEN << " Inventory asset row removed .\n"
+                         << RESET;
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+                cout << RED << " Missing validation key.\n"
+                     << RESET;
+        }
+        else if (choice == 5)
+        {
+            clearScreen();
+            header(" Research Journalist Asset");
+            Journal j;
+            try
+            {
+                j.input();
+                journals.push_back(j);
+                cout << GREEN << "\n Entry locked into database.\n"
+                     << RESET;
+            }
+            catch (exception &e)
+            {
+                cout << RED << "Error: " << e.what() << RESET << endl;
+            }
+        }
+        else if (choice == 6)
+        {
+            clearScreen();
+            header("View INV Of Academic Journals");
+            Reports::generateJournalReport(journals);
+        }
+        else if (choice == 7)
+        {
+            clearScreen();
+            header("Track Journalest Tital");
+            cout << "Enter exact Journal Name: ";
+            string name;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            getline(cin, name);
+            bool found = false;
+            for (Journal &j : journals)
+            {
+                if (j.matchesJournalName(name))
+                {
+                    j.display();
+                    found = true;
+                }
+            }
+            if (!found)
+                cout << RED << "Name of Journal lookup failure.\n"
+                     << RESET;
+        }
+        else if (choice == 8)
+        {
+            clearScreen();
+            header("Delete Journal Registry Line");
+            cout << "Enter journal name string: ";
+            string name;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            getline(cin, name);
+            bool found = false;
+            for (size_t i = 0; i < journals.size(); i++)
+            {
+                if (journals[i].matchesJournalName(name))
+                {
+                    journals.erase(journals.begin() + i);
+                    cout << GREEN << "Entry is completely erased.\n"
+                         << RESET;
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+                cout << RED << "String trace not matched \n"
+                     << RESET;
+        }
+
+        if (choice != 0)
+            pause();
+    } while (choice != 0);
+}
