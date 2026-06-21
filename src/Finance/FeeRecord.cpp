@@ -20,11 +20,11 @@ FeeRecord::~FeeRecord() {}
 
 void FeeRecord::input() {
 
-    cout << "===========================================" << endl;
+    cout << BOLD << CYAN << "===========================================" << endl;
     cout << "------------- FEE RECORD ENTRY ------------" << endl;
-    cout << "===========================================" << endl;
+    cout << "===========================================" << endl << RESET;
 
-    cout << "Enter The Fee ID = ";
+    cout << GREEN << "Enter The Fee ID = ";
     cin >> feeID;
 
     if (feeID <= 0) {
@@ -49,32 +49,32 @@ void FeeRecord::input() {
     cout << "Enter the Due Date (DD-MM--YYYY) = ";
     getline(cin, dueDate);
 
-    cout << "Enter the Amount = ";
+    cout << "Enter the Amount = " << RESET;
     cin >> amount;
 
     if (amount < 0) {
         throw runtime_error("Entered Invalid Amount!");
     }
 
-    cout << "Is Ur Fee Paid! (1 = Yes, 0 = No) = ";
+    cout << RED << "Is Ur Fee Paid! (1 = Yes, 0 = No) = " << RESET;
     cin >> isPaid;
 }
 
 void FeeRecord::display() const {
     
-    cout << "=====================================" << endl;
+    cout << BOLD << CYAN << "=====================================" << endl;
     cout << "--------- FEE RECORD DETAILS --------" << endl;
-    cout << "=====================================" << endl;
+    cout << "=====================================" << endl << RESET;
 
-    cout << left << setw(25) << "Fee ID = " << feeID << endl;
+    cout << left << GREEN << setw(25) << "Fee ID = " << feeID << endl;
     cout << left << setw(25) << "Student ID = " << studentID << endl;
     cout << left << setw(25) << "Student Name = " << studentName << endl;
     cout << left << setw(25) << "Fee Type = " << feeType << endl;
     cout << left << setw(25) << "Due Date of Fee = " << dueDate << endl;
     cout << left << setw(25) << "Fee Amount = " << amount << endl;
-    cout << left << setw(25) << "Status = " << (isPaid ? "Paid" : "UnPaid") << endl;
+    cout << left << setw(25) << "Status = " << (isPaid ? "Paid" : "UnPaid") << endl << RESET;
 
-    cout << "==========================================" << endl;
+    cout << BOLD << CYAN << "==========================================" << endl << RESET;
 } 
 
 

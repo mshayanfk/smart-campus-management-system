@@ -20,13 +20,13 @@ Course::~Course()
 }
 void Course::input()
 {
-    cout << "\n ==== Enter Course Details ==== \n";
-    cout << "Enter the course code = ";
+    cout << BOLD << CYAN << "\n ====== Enter Course Details ====== \n" <<RESET;
+    cout << GREEN << "Enter the course code: ";
     cin >> courseCode;
 
-    cout << "Enter the course name = ";
-    getline(cin, courseName);
-    cout << "Enter the credit hours";
+    cout << "Enter the course name: ";
+    cin >> courseName;
+    cout << "Enter the credit hours:";
     cin >> creditHours;
 
     if (creditHours <= 0 || creditHours > 6)
@@ -34,18 +34,18 @@ void Course::input()
         throw runtime_error("invalid credit hours!");
     }
     cin.ignore();
-    cout << "Enter the department ";
+    cout << "Enter the department: ";
     getline(cin, department);
-    cout << "Enter the semester season ";
+    cout << "Enter the semester season: " <<RESET;
     getline(cin, semester);
     isActive = true;
 }
 void Course::display() const
 {
     cout << "\n=================================\n";
-    cout << "           COURSE INFO           \n";
+    cout << "            COURSE INFO           \n";
     cout << "=================================\n";
-    cout << left << setw(18) << "Course Codde:" << courseCode << "\n";
+    cout << left << setw(18) << "Course Code:" << courseCode << "\n";
     cout << left << setw(18) << "Course Name:" << courseName << "\n";
     cout << left << setw(18) << "Credit hours:" << creditHours << "\n";
     cout << left << setw(18) << "Departmnt:" << department << "\n";

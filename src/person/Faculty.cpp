@@ -22,11 +22,11 @@ Faculty::~Faculty() {}
 void Faculty::input() {
     Person::input();
 
-    cout << "============================================" << endl;
-    cout << "------------ FACULTY INFORMATION -----------" << endl;
-    cout << "============================================" << endl;
+    cout << CYAN << "============================================" << endl << RESET;
+    cout << CYAN << "------------ FACULTY INFORMATION -----------" << endl << RESET;
+    cout <<  CYAN << "============================================" << endl << RESET;
 
-    cout << "Enter the Department = ";
+    cout << GREEN << "Enter the Department = ";
     getline(cin, department);
 
     cout << "Enter your Specialization = ";
@@ -38,7 +38,7 @@ void Faculty::input() {
     cout << "Enter your Office Number = ";
     getline(cin, offRoom);
 
-    cout << "Enter your Experience = ";
+    cout << "Enter your Experience = " << RESET;
     cin >> experience;
 
     if (experience < 0) {
@@ -68,11 +68,11 @@ void Faculty::input() {
 void Faculty::display() const {
     Person::display();
 
-    cout << "==========================================" << endl;
-    cout << "              FACULTY DETAILS             " << endl;
-    cout << "==========================================" << endl;
+    cout << CYAN << "==========================================" << endl << RESET;
+    cout << CYAN << "              FACULTY DETAILS             " << endl << RESET;
+    cout << CYAN << "==========================================" << endl << RESET;
 
-    cout << left << setw(25) << "Department = " << department << endl;
+    cout << left << GREEN << setw(25) << "Department = " << department << endl;
     
     cout << left << setw(25) << "Specialization = " << specialization << endl;
 
@@ -82,9 +82,9 @@ void Faculty::display() const {
 
     cout << left << setw(25) << "Experience = " << experience << endl;
 
-    cout << left << setw(25) << "Salary = " << salary << endl;
+    cout << left << setw(25) << "Salary = " << salary << endl << RESET;
 
-    cout << "=================================================" << endl;
+    cout << BOLD << CYAN << "=================================================" << endl << RESET;
 
 }
 

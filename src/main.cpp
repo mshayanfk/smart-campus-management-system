@@ -78,13 +78,18 @@ void clearScreen()
 void header(string title)
 {
     cout << YELLOW << "===========================================" << RESET << endl;
-    cout << BOLD << CYAN << " " << title << RESET << endl;
+    cout << CYAN << "       " << title << RESET << endl;
     cout << YELLOW << "===========================================" << RESET << endl;
 }
 
 void pause()
 {
-    cout << " " << GREEN << "Press Enter to Continue...." << RESET;
+    cout << endl;
+    cout << endl;
+    cout << endl;
+    cout << endl;
+    cout << endl;
+    cout << GREEN << "Press Enter to Continue...." << RESET;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin.get();
 }
@@ -92,7 +97,7 @@ void pause()
 int getMenuChoice()
 {
     int choice;
-    cout << BOLD << GREEN << "Enter your Selection = " << RESET;
+    cout << YELLOW << "Enter your Selection = " << RESET;
     cin >> choice;
 
     if (cin.fail())
@@ -445,7 +450,7 @@ void academicMenu()
         {
             clearScreen();
             header("Find  Course Code");
-            cout << "Enter target Course Code: ";
+            cout << GREEN << "Enter target Course Code: " <<RESET;
             string code;
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, code);
@@ -466,7 +471,7 @@ void academicMenu()
         {
             clearScreen();
             header("Delete Course Entry");
-            cout << "Enter Course Code to delete: ";
+            cout << GREEN << "Enter Course Code to delete: " << RESET;
             string code;
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, code);
@@ -513,7 +518,7 @@ void academicMenu()
         {
             clearScreen();
             header("Track Enrollment with Student ID");
-            cout << "Enter Numeric Student ID: ";
+            cout << GREEN << "Enter Numeric Student ID: " <<RESET;
             int sid;
             cin >> sid;
             bool found = false;
@@ -533,7 +538,7 @@ void academicMenu()
         {
             clearScreen();
             header("Delete Enrollment Registry");
-            cout << "Enter unique Enrollment ID to drop: ";
+            cout << GREEN << "Enter unique Enrollment ID to drop: " <<RESET;
             int eid;
             cin >> eid;
             bool found = false;
@@ -582,10 +587,10 @@ void personnelMenu()
             header("Add New Personnel Record");
             cout << YELLOW << "Select Personnel Type:\n"
                  << RESET;
-            cout << " [0] Student\n"
+            cout << GREEN << " [0] Student\n"
                  << " [1] Faculty\n"
                  << " [2] Staff\n\n";
-            cout << " Enter your choice (0-2): ";
+            cout << " Enter your choice (0-2): " <<RESET;
             int typeChoice;
             cin >> typeChoice;
 
@@ -654,7 +659,7 @@ void personnelMenu()
         {
             clearScreen();
             header("Search Personnel Record");
-            cout << "Enter Personnel ID: ";
+            cout << GREEN << "Enter Personnel ID: ";
             int id;
             cin >> id;
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -678,7 +683,7 @@ void personnelMenu()
         {
             clearScreen();
             header("Delete Personnel Record");
-            cout << "Enter ID to Delete: ";
+            cout << GREEN << "Enter ID to Delete: ";
             int id;
             cin >> id;
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -754,7 +759,7 @@ void libraryMenu()
         {
             clearScreen();
             header("Look Up Books via Aurthor Profile");
-            cout << "Enter complete Author name : ";
+            cout << GREEN << "Enter complete Author name : " << RESET;
             string author;
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, author);
@@ -775,7 +780,7 @@ void libraryMenu()
         {
             clearScreen();
             header("Del Book Index");
-            cout << "Enter target Book Number: ";
+            cout << GREEN << "Enter target Book Number: " << RESET;
             string isbn;
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, isbn);
@@ -822,7 +827,7 @@ void libraryMenu()
         {
             clearScreen();
             header("Track Journalest Tital");
-            cout << "Enter exact Journal Name: ";
+            cout << GREEN << "Enter exact Journal Name: " << RESET;
             string name;
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, name);
@@ -843,7 +848,7 @@ void libraryMenu()
         {
             clearScreen();
             header("Delete Journal Registry Line");
-            cout << "Enter journal name string: ";
+            cout << GREEN << "Enter journal name string: " << RESET;
             string name;
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, name);
@@ -932,7 +937,7 @@ void hostelMenu()
         {
             clearScreen();
             header("Search Hostel Block");
-            cout << "Enter Block Name: ";
+            cout << GREEN << "Enter Block Name: " << RESET;
             string name;
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, name);
@@ -942,7 +947,7 @@ void hostelMenu()
         {
             clearScreen();
             header("Delete Hostel Block");
-            cout << "Enter Block Name to Delete: ";
+            cout << GREEN << "Enter Block Name to Delete: " << RESET;
             string name;
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, name);
@@ -960,7 +965,7 @@ void hostelMenu()
             }
             else
             {
-                cout << "Enter Block Name: ";
+                cout << GREEN << "Enter Block Name: " << RESET;
                 string name;
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 getline(cin, name);
@@ -1005,18 +1010,18 @@ void financeMenu()
         clearScreen();
         header("FINANCE MANAGEMENT SYSTEM");
 
-        cout << " [1] Add Fee Record\n";
+        cout << GREEN << " [1] Add Fee Record\n";
         cout << " [2] View All Fee Records\n";
         cout << " [3] Search Fee Records by Student ID\n";
         cout << " [4] Delete Fee Record\n";
         cout << " [5] Generate Invoice\n";
         cout << " [6] View All Invoices\n";
         cout << " [7] Print Invoice Receipt\n";
-        cout << " [8] Delete Invoice\n";
+        cout << " [8] Delete Invoice\n" << RESET;
         cout << RED << " [0] Return to Main Menu\n"
              << RESET;
 
-        cout << CYAN << "--------------------------------------------------------=" << RESET << endl;
+        cout << BOLD << CYAN << "--------------------------------------------------------=" << RESET << endl;
         choice = getMenuChoice();
 
         if (choice == 1)
@@ -1052,7 +1057,7 @@ void financeMenu()
             clearScreen();
             header("Search Fee Records");
 
-            cout << "Enter Student ID: ";
+            cout << GREEN << "Enter Student ID: " << RESET;
             int sid;
             cin >> sid;
 
@@ -1079,7 +1084,7 @@ void financeMenu()
             clearScreen();
             header("Delete Fee Record");
 
-            cout << "Enter Fee Record ID: ";
+            cout << GREEN << "Enter Fee Record ID: " << RESET;
             int fid;
             cin >> fid;
 
@@ -1110,7 +1115,7 @@ void financeMenu()
             clearScreen();
             header("Generate Invoice");
 
-            cout << "Enter Fee Record ID: ";
+            cout << GREEN << "Enter Fee Record ID: " << RESET;
             int fid;
             cin >> fid;
 
@@ -1130,7 +1135,7 @@ void financeMenu()
 
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-                    cout << "Enter Date (DD-MM-YYYY): ";
+                    cout << GREEN << "Enter Date (DD-MM-YYYY): " << RESET;
                     getline(cin, date);
 
                     inv.setInvoiceID(invID);
@@ -1167,7 +1172,7 @@ void financeMenu()
             clearScreen();
             header("Print Invoice");
 
-            cout << "Enter Invoice ID: ";
+            cout << GREEN << "Enter Invoice ID: " << RESET;
             int invID;
             cin >> invID;
 
@@ -1177,9 +1182,11 @@ void financeMenu()
             {
                 if (inv.getInvoiceID() == invID)
                 {
-                    cout << "\n================ INVOICE =================\n";
+                    cout << BOLD << CYAN << "==============================================" << RESET << endl;
+                    cout << BOLD << CYAN << "\n================ INVOICE =================\n" << RESET << endl;
+                    cout << BOLD << CYAN << "==============================================" << RESET << endl;
                     inv.printReceipt();
-                    cout << "=========================================\n";
+                    cout << BOLD << CYAN << "=========================================\n" << RESET;
 
                     found = true;
                     break;
@@ -1241,7 +1248,7 @@ void reportsMenu()
         clearScreen();
         header("REPORTS AND DATA ANALYSIS");
 
-        cout << " [1] Generate Person Report\n";
+        cout << GREEN << " [1] Generate Person Report\n";
         cout << " [2] Generate Course Report\n";
         cout << " [3] Generate Enrollment Report\n";
         cout << " [4] Generate Library Book Report\n";
@@ -1249,10 +1256,10 @@ void reportsMenu()
         cout << " [6] Generate Hostel Report\n";
         cout << " [7] Generate Fee Report\n";
         cout << " [8] Generate Invoice Report\n";
-        cout << " [9] View System Summary\n";
+        cout << " [9] View System Summary\n" << RESET;
         cout << RED << " [0] Return to Main Menu\n" << RESET;
 
-        cout << CYAN << "--------------------------------------------------------=" << RESET << endl;
+        cout << BOLD << CYAN << "--------------------------------------------------------=" << RESET << endl;
 
         choice = getMenuChoice();
 
@@ -1309,9 +1316,9 @@ void reportsMenu()
                 totalRooms += block.getRooms().size();
             }
 
-            cout << "\n--- System Overview ---\n\n";
+            cout << CYAN << "\n--- System Overview ---\n\n" << RESET;
 
-            cout << "Total Persons       : " << persons.size() << "\n";
+            cout << GREEN << "Total Persons       : " << persons.size() << "\n";
             cout << "Total Courses       : " << courses.size() << "\n";
             cout << "Total Enrollments   : " << enrollments.size() << "\n";
             cout << "Total Hostel Blocks : " << hostelManager.getBlocks().size() << "\n";
@@ -1319,9 +1326,9 @@ void reportsMenu()
             cout << "Total Books         : " << books.size() << "\n";
             cout << "Total Journals      : " << journals.size() << "\n";
             cout << "Total Fee Records   : " << fees.size() << "\n";
-            cout << "Total Invoices      : " << invoices.size() << "\n";
+            cout << "Total Invoices      : " << invoices.size() << "\n" << RESET;
 
-            cout << "----------------------------------------\n";
+            cout << BOLD << CYAN << "=======================================\n" << RESET;
         }
 
         if (choice != 0)
@@ -1342,12 +1349,12 @@ void mainMenu()
         cout << BOLD << GREEN << "           SMART CAMPUS MANAGEMENT SYSTEM               \n" << RESET;
         cout << BOLD << CYAN << "=========================================================\n" << RESET;
 
-        cout << BOLD << "  [1]" << RESET << " Academic Management\n";
-        cout << BOLD << "  [2]" << RESET << " Personnel Management\n";
-        cout << BOLD << "  [3]" << RESET << " Library Management\n";
-        cout << BOLD << "  [4]" << RESET << " Hostel Management\n";
-        cout << BOLD << "  [5]" << RESET << " Finance Management\n";
-        cout << BOLD << "  [6]" << RESET << " Reports & Analytics\n";
+        cout << GREEN << "  [1]" << " Academic Management\n";
+        cout << "  [2]" << " Personnel Management\n";
+        cout << "  [3]" << " Library Management\n";
+        cout << "  [4]" << " Hostel Management\n";
+        cout << "  [5]" << " Finance Management\n";
+        cout << "  [6]" << " Reports & Analytics\n";
         cout << RED  << "  [0] Exit System\n" << RESET;
 
         cout << BOLD << CYAN << "=========================================================\n" << RESET;

@@ -20,8 +20,8 @@ Library::~Library()
 }
 void Library::input()
 {
-    cout << "\n===== ENTER BOOK DETAILS =====\n";
-    cout << "Enter Book ID = ";
+    cout << CYAN << "\n===== ENTER BOOK DETAILS =====\n" << RESET;
+    cout << GREEN << "Enter Book ID = ";
     cin >> bookId;
     cin.ignore();
     cout << "Enter Book Title";
@@ -38,18 +38,18 @@ void Library::input()
     cin.ignore();
     cout << "Enter the Issue Date:";
     getline(cin, issueDate);
-    cout << "Enter the Return Date:";
+    cout << "Enter the Return Date:" << RESET;
     getline(cin, returnDate);
 
     isAvailable = true;
 }
 void Library::display() const
 {
-    cout << "\n=====================================\n";
-    cout << "          LIBRARY RECORD             \n";
-    cout << "=====================================\n";
+    cout << CYAN << "\n=====================================\n" << RESET;
+    cout << CYAN << "          LIBRARY RECORD             \n" << RESET;
+    cout << CYAN << "=====================================\n" << RESET;
 
-    cout << left << setw(20) << "Book Id:" << bookId << endl;
+    cout << left << GREEN << setw(20) << "Book Id:" << bookId << endl;
     cout << left << setw(20) << "Title:" << bookTitle << "\n";
     cout << left << setw(20) << "Aurthor:" << author << endl;
     cout << left << setw(20) << "Category:" << category << endl;
@@ -57,9 +57,9 @@ void Library::display() const
     cout << left << setw(20) << "Issue Date:" << issueDate << endl;
     cout << left << setw(20) << "Return date:" << returnDate << endl;
 
-    cout << left << setw(20) << "Availability:" << (isAvailable ? "Available" : "Unavailable") << endl;
+    cout << left << setw(20) << "Availability:" << (isAvailable ? "Available" : "Unavailable") << endl << RESET;
 
-    cout << "=====================================\n";
+    cout << BOLD << CYAN << "=====================================\n" << RESET;
 }
 void Library::saveToCSV(ofstream &outputFile)
 {

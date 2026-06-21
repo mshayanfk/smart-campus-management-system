@@ -21,8 +21,8 @@ Enrollment::~Enrollment()
 }
 void Enrollment::input()
 {
-    cout << "\n===== ENTER ENROLLMENT DETAILS =====\n";
-    cout << "Enter Enrollenemt ID:";
+    cout << CYAN << "\n===== ENTER ENROLLMENT DETAILS =====\n" <<RESET <<endl;
+    cout << GREEN << "Enter Enrollenemt ID:";
     cin >> enrollmentId;
     cout << "Enter Student ID:";
     cin >> studentId;
@@ -32,23 +32,22 @@ void Enrollment::input()
     getline(cin, courseCode);
     cout << "Enter the Semester:";
     getline(cin, semester);
-    cout << "Enter Grade: ";
+    cout << "Enter Grade: " << RESET;
     getline(cin, grade);
     isActive = true;
 }
 void Enrollment::display() const
 {
-    cout << "\n=====================================\n";
-    cout << "         ENROLLMENT DETAILS          \n";
-    cout << "=====================================\n";
-    cout << left << setw(20) << "Enrollment ID:" << enrollmentId << endl;
+    cout << CYAN << "\n=====================================\n" <<RESET;
+    cout << CYAN << "         ENROLLMENT DETAILS          \n";
+    cout << CYAN << "=====================================\n" <<RESET;
+    cout << GREEN << left << setw(20) << "Enrollment ID:" << enrollmentId << endl;
     cout << left << setw(20) << "Student ID:" << studentId << endl;
     cout << left << setw(20) << "Course Code:" << courseCode << endl;
     cout << left << setw(20) << "Semester:" << semester << endl;
     cout << left << setw(20) << "Enrollement:" << enrollmentDate << endl;
     cout << left << setw(20) << "Grade:" << grade << endl;
-
-    cout << left << setw(20) << "Status:" << (isActive ? "Active" : "Is not Active") << endl;
+    cout << left << setw(20) << "Status:" << (isActive ? "Active" : "Is not Active") << endl <<RESET;
     cout << "=====================================\n";
 }
 void Enrollment::saveToCSV(ofstream &outputFile)

@@ -17,13 +17,13 @@ void HostelManager::addBlock(const HostelBlock &block) {
 void HostelManager::displayAllBlocks() const {
 
     if (hostelBlocks.empty()) {
-        cout << "No Hostel Blocks are Available " << endl;
+        cout << RED << "No Hostel Blocks are Available " << endl << RESET;
         return;
     }
 
-    cout << "=========================================" << endl;
+    cout << CYAN << "=========================================" << endl;
     cout << "--------- HOSTEL BLOCK RECORDS ----------" << endl;
-    cout << "=========================================" << endl;
+    cout << "=========================================" << endl << RESET;
 
     for (const HostelBlock &block : hostelBlocks) {
         block.display();
@@ -36,7 +36,7 @@ void HostelManager::searchBlock(string blockName) const {
     for (const HostelBlock &block : hostelBlocks) {
         if (block.getBlockName() == blockName) {
 
-            cout << "Block Found Successfully " << endl;
+            cout << GREEN << "Block Found Successfully " << endl << RESET;
             block.display();
             found = true;
             break;
@@ -44,7 +44,7 @@ void HostelManager::searchBlock(string blockName) const {
     }
 
     if (!found) {
-        cout << "No Block Found With This Name = " << blockName << endl;
+        cout << RED << "No Block Found With This Name = " << RESET << GREEN << blockName << RESET << endl;
     }
 }
 
@@ -53,13 +53,13 @@ void HostelManager::removeBlock(string blockName) {
     for (int i = 0; i < hostelBlocks.size(); i++) {
         if (hostelBlocks[i].getBlockName() == blockName) {
             hostelBlocks.erase(hostelBlocks.begin() + i);
-            cout << "Block Removed Successfully" << endl;
+            cout << GREEN << "Block Removed Successfully" << endl << RESET;
             found = true;
             break;
         }
     }
     if (!found) {
-        cout << "No Block Found With This Name = " << blockName << endl;
+        cout << RED << "No Block Found With This Name = " << RESET << GREEN << blockName << RESET << endl;
     }
 }
 

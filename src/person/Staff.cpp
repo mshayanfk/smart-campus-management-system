@@ -25,11 +25,11 @@ void Staff::input() {
 
     cin.ignore();
     
-    cout << "--------------------------------------------------" << endl;
-    cout << "=============== ENTER STAFF DETALS ===============" << endl;
-    cout << "--------------------------------------------------" << endl;
+    cout << CYAN << "--------------------------------------------------" << endl << RESET;
+    cout << CYAN << "=============== ENTER STAFF DETALS ===============" << endl << RESET;
+    cout << CYAN << "--------------------------------------------------" << endl << RESET;
 
-    cout << "Enter the Department = ";
+    cout << GREEN << "Enter the Department = ";
     getline(cin, department);
 
     cout << "Enter your Role in the Department = ";
@@ -38,7 +38,7 @@ void Staff::input() {
     cout << "Enter your Shift (Morning/Evening/Night) = ";
     getline(cin, shift);
 
-    cout << "Enter your Salary = ";
+    cout << "Enter your Salary = " << RESET;
     cin >> salary;
 
     if (cin.fail()) {
@@ -54,14 +54,14 @@ void Staff::display() const {
 
     Person::display();
 
-    cout << "=========== STAFF DETAILS =============" << endl;
+    cout << BOLD << CYAN << "=========== STAFF DETAILS =============" << endl;
 
-    cout << left << setw(20) << "Department = " << department << endl;
+    cout << left << GREEN << setw(20) << "Department = " << department << endl;
     cout << left << setw(20) << "Role = " << role << endl;
     cout << left << setw(20) << "Shift = " << shift << endl;
-    cout << left << setw(20) << "Salary = " << salary << endl;
+    cout << left << setw(20) << "Salary = " << salary << endl << RESET;
 
-    cout << "------------------------------------------" << endl;
+    cout << BOLD << CYAN << "------------------------------------------" << endl << RESET;
 
 }
 

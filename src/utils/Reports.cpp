@@ -3,10 +3,12 @@ using namespace std;
 
 void Reports::generatePersonReport(vector<Person*> &persons) {
 
-    cout << "========= PERSON REPORT =========";
+    cout << BOLD << CYAN <<"========= PERSON REPORT =========" << RESET << endl;
+        cout << endl;
+
 
     if (persons.empty()) {
-        cout << "No Person Records Found" <<endl; 
+        cout << left << RED << setw(20) << "No Person Records Found" <<endl << RESET; 
         return;
     }
 
@@ -17,10 +19,11 @@ void Reports::generatePersonReport(vector<Person*> &persons) {
 
 void Reports::generateCourseReport(vector<Course> &courses) {
 
-    cout << "========= COURSE REPORT ========";
+    cout << BOLD << CYAN << "========= COURSE REPORT ========" <<RESET <<endl;
+    cout << endl;
 
     if (courses.empty()) {
-        cout << "No Course Records Found";
+        cout << left << RED << setw(20) << "No Course Records Found" <<endl << RESET;
         return;
     }
 
@@ -31,10 +34,12 @@ void Reports::generateCourseReport(vector<Course> &courses) {
 
 void Reports::generateEnrollmentReport(vector<Enrollment> &enrollments) {
 
-    cout << "======= ENROLLMENT REPORT =======";
+    cout << BOLD << CYAN << "======= ENROLLMENT REPORT =======" << RESET << endl;
+        cout << endl;
+
 
     if (enrollments.empty()) {
-        cout << "No Enrollment Records Found";
+        cout << left << RED << setw(20) << "No Enrollment Records Found" << endl << RESET;
         return;
     }
 
@@ -45,10 +50,12 @@ void Reports::generateEnrollmentReport(vector<Enrollment> &enrollments) {
 
 void Reports::generateRoomReport(vector<Room> &rooms) {
 
-    cout << "======== ROOM REPORT ========";
+    cout << BOLD << CYAN << "======== ROOM REPORT ========" << RESET << endl;
+        cout << endl;
+
 
     if (rooms.empty()) {
-        cout << "No Room Records Found";
+        cout << left << RED << setw(20) << "No Room Records Found" << RESET << endl; 
         return;
     }
 
@@ -59,10 +66,12 @@ void Reports::generateRoomReport(vector<Room> &rooms) {
 
 void Reports::generateHostelBlockReport(vector<HostelBlock> &blocks) {
 
-    cout << "======== HOSTEL BLOCK REPORT =========";
+    cout << BOLD << CYAN << "======== HOSTEL BLOCK REPORT =========" << RESET << endl;
+        cout << endl;
+
 
     if (blocks.empty()) {
-        cout << "No Hostel Block Records Found";
+        cout << left << RED << setw(20) << "No Hostel Block Records Found" << RESET << endl;
         return;
     }
 
@@ -73,10 +82,12 @@ void Reports::generateHostelBlockReport(vector<HostelBlock> &blocks) {
 
 void Reports::generateBookReport(vector<Book> &books) {
 
-    cout << "======== BOOK REPORT ========";
+    cout << BOLD << CYAN << "======== BOOK REPORT ========" << endl << RESET;
+        cout << endl;
+
 
     if (books.empty()) {
-        cout << "No Book Records Found";
+        cout << left << RED << setw(20) << "No Book Records Found" << RESET << endl;
         return;
     }
 
@@ -87,10 +98,12 @@ void Reports::generateBookReport(vector<Book> &books) {
 
 void Reports::generateJournalReport(vector<Journal> &journals) {
 
-    cout << "======== JOURNAL REPORT =====";
+    cout << BOLD << CYAN << "======== JOURNAL REPORT =====" << RESET << endl;
+        cout << endl;
+
 
     if (journals.empty()) {
-        cout << "No Journal Records Found\n";
+        cout << left << RED << setw(20) << "No Journal Records Found\n" << RESET << endl;
         return;
     }
 
@@ -101,10 +114,12 @@ void Reports::generateJournalReport(vector<Journal> &journals) {
 
 void Reports::generateLibraryReport(vector<Library> &libraryItems) {
 
-    cout << "========= LIBRARY REPORT ========";
+    cout << BOLD << CYAN << "========= LIBRARY REPORT ========" << RESET << endl;
+        cout << endl;
+
 
     if (libraryItems.empty()) {
-        cout << "No Library Records Found";
+        cout << left << RED << setw(20) << "No Library Records Found" << RESET << endl;
         return;
     }
 
@@ -115,10 +130,12 @@ void Reports::generateLibraryReport(vector<Library> &libraryItems) {
 
 void Reports::generateFeeReport(vector<FeeRecord> &fees) {
 
-    cout << "======== FEE REPORT =======";
+    cout << BOLD << CYAN << "======== FEE REPORT =======" << RESET << endl;
+        cout << endl;
+
 
     if (fees.empty()) {
-        cout << "No Fee Records Found";
+        cout << left << RED << setw(20) << "No Fee Records Found" << RESET << endl;
         return;
     }
 
@@ -129,10 +146,12 @@ void Reports::generateFeeReport(vector<FeeRecord> &fees) {
 
 void Reports::generateInvoiceReport(vector<Invoice> &invoices) {
 
-    cout << "======== INVOICE REPORT ========";
+    cout << BOLD << CYAN << "======== INVOICE REPORT ========" << RESET << endl;
+        cout << endl;
+
 
     if (invoices.empty()) {
-        cout << "No Invoice Records Found";
+        cout << left << RED << setw(20) << "No Invoice Records Found" << RESET << endl;
         return;
     }
 
@@ -154,9 +173,11 @@ void Reports::generateSystemSummary(
     vector<Invoice> &invoices
 ) {
 
-    cout << "============== SYSTEM SUMMARY ==============" << endl;
+    cout << BOLD << CYAN << "=========================================== " << endl << RESET;
+    cout << BOLD << CYAN << "============== SYSTEM SUMMARY ==============" << endl << RESET;
+    cout << BOLD << CYAN << "=========================================== " << endl << RESET;    
     
-    cout << "Persons = " << persons.size() << endl;
+    cout << GREEN << "Persons = " << persons.size() << endl;
     cout << "Courses = " << courses.size() << endl;
     cout << "Enrollments = " << enrollments.size() << endl;
     cout << "Rooms = " << rooms.size() << endl;
@@ -165,5 +186,5 @@ void Reports::generateSystemSummary(
     cout << "Journals = " << journals.size() << endl;
     cout << "Library Items = " << libraryItems.size() << endl;
     cout << "Fee Records = " << fees.size() << endl;
-    cout << "Invoices = " << invoices.size() << endl;
+    cout << "Invoices = " << invoices.size() << endl << RESET;
 }

@@ -16,19 +16,19 @@ HostelBlock::~HostelBlock() {}
 
 void HostelBlock::input() {
 
-    cout << "=======================================" << endl;
+    cout << CYAN << "=======================================" << endl;
     cout << "-------  HOSTEL BLOCK INFORMATION -----" << endl;
-    cout << "=======================================" << endl;
+    cout << "=======================================" << endl << RESET;
 
     cin.ignore();
 
-    cout << "Enter Block Name = ";
+    cout << GREEN << "Enter Block Name = ";
     getline(cin, blockName);
 
     cout << "Enter Warden Name = ";
     getline(cin, wardenName);
 
-    cout << "Enter Total Rooms = ";
+    cout << "Enter Total Rooms = " << RESET;
     cin >> totalRooms;
 
     if (totalRooms <= 0) {
@@ -38,16 +38,16 @@ void HostelBlock::input() {
 
 void HostelBlock::display() const {
 
-    cout << "=====================================" << endl;
+    cout << CYAN << "=====================================" << endl;
     cout << "-------- HOSTEL BLOCK DETAILS -------" << endl;
-    cout << "=====================================" << endl;
+    cout << "=====================================" << endl << RESET;
 
-    cout << left << setw(25) << "Block Name = " << blockName << endl;
+    cout << left << GREEN << setw(25) << "Block Name = " << blockName << endl;
     cout << left << setw(25) << "Warden Name = " << wardenName << endl;
     cout << left << setw(25) << "Total Rooms = " << totalRooms << endl;
-    cout << left << setw(25) << "Rooms Added = " << rooms.size() << endl;
+    cout << left << setw(25) << "Rooms Added = " << rooms.size() << endl << RESET;
 
-    cout << "=========================================" << endl;
+    cout << BOLD << CYAN << "=========================================" << endl << RESET;
 }
 
 
@@ -62,7 +62,7 @@ void HostelBlock::displayRooms() const {
         return;
     }
 
-    cout << "============ ROOM LIST ================" << endl;
+    cout << BOLD << CYAN << "============ ROOM LIST ================" << endl << RESET;
 
     for (const Room &room : rooms) {
         room.display();

@@ -20,9 +20,9 @@ LibraryItem::~LibraryItem() {
 
 void LibraryItem::input() {
 
-    cout << "\n===== ENTER LIBRARY ITEM DETAILS =====\n";
+    cout << CYAN << "\n===== ENTER LIBRARY ITEM DETAILS =====\n" << RESET;
 
-    cout << "Enter Item ID: ";
+    cout << GREEN << "Enter Item ID: ";
     cin >> itemId;
 
     cin.ignore();
@@ -36,7 +36,7 @@ void LibraryItem::input() {
     cout << "Enter Publisher: ";
     getline(cin, publisher);
 
-    cout << "Enter Publication Year: ";
+    cout << "Enter Publication Year: " << RESET;
     cin >> publicationYear;
 
     if (publicationYear < 0) {
@@ -48,11 +48,11 @@ void LibraryItem::input() {
 
 void LibraryItem::display() const {
 
-    cout << "\n=====================================\n";
-    cout << "         LIBRARY ITEM INFO          \n";
-    cout << "=====================================\n";
+    cout << CYAN << "\n=====================================\n" << RESET;
+    cout << CYAN << "         LIBRARY ITEM INFO          \n" << RESET;
+    cout << CYAN << "=====================================\n" << RESET;
 
-    cout << left << setw(20) << "Item ID:" << itemId << endl;
+    cout << left << GREEN << setw(20) << "Item ID:" << itemId << endl;
     cout << left << setw(20) << "Title:" << title << endl;
     cout << left << setw(20) << "Category:" << category << endl;
     cout << left << setw(20) << "Publisher:" << publisher << endl;
@@ -60,9 +60,9 @@ void LibraryItem::display() const {
 
     cout << left << setw(20) << "Availability:"
          << (isAvailable ? "Available" : "Unavailable")
-         << endl;
+         << endl << RESET;
 
-    cout << "=====================================\n";
+    cout << BOLD << CYAN << "=====================================\n" << RESET;
 }
 
 void LibraryItem::saveToCSV(ofstream &outputFile) const {

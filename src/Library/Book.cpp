@@ -23,11 +23,11 @@ void Book::input()
 
     LibraryItem::input();
 
-    cout << "\n===== ENTER BOOK DETAILS =====\n";
+    cout << BOLD << CYAN << "\n===== ENTER BOOK DETAILS =====\n" << RESET;
 
     cin.ignore();
 
-    cout << "Enter Author: ";
+    cout << GREEN << "Enter Author: ";
     getline(cin, author);
 
     cout << "Enter ISBN: ";
@@ -43,7 +43,7 @@ void Book::input()
 
     cin.ignore();
 
-    cout << "Enter Edition: ";
+    cout << "Enter Edition: " << RESET;
     getline(cin, edition);
 }
 
@@ -52,12 +52,12 @@ void Book::display() const
 
     LibraryItem::display();
 
-    cout << left << setw(20) << "Author:" << author << endl;
+    cout << left << GREEN << setw(20) << "Author:" << author << endl;
     cout << left << setw(20) << "ISBN:" << isbn << endl;
     cout << left << setw(20) << "Pages:" << totalPages << endl;
-    cout << left << setw(20) << "Edition:" << edition << endl;
+    cout << left << setw(20) << "Edition:" << edition << endl << RESET;
 
-    cout << "=====================================\n";
+    cout << BOLD << CYAN << "=====================================\n" << RESET;
 }
 
 void Book::saveToCSV(ofstream &outputFile) const

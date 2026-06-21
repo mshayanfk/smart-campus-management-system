@@ -23,11 +23,11 @@ void Journal::input()
 
     LibraryItem::input();
 
-    cout << "\n===== ENTER JOURNAL DETAILS =====\n";
+    cout << CYAN << "\n===== ENTER JOURNAL DETAILS =====\n" << RESET;
 
     cin.ignore();
 
-    cout << "Enter Journal Name: ";
+    cout << GREEN << "Enter Journal Name: ";
     getline(cin, journalName);
 
     cout << "Enter Volume Number: ";
@@ -48,7 +48,7 @@ void Journal::input()
 
     cin.ignore();
 
-    cout << "Enter Editor Name: ";
+    cout << "Enter Editor Name: " << RESET;
     getline(cin, editor);
 }
 
@@ -57,12 +57,12 @@ void Journal::display() const
 
     LibraryItem::display();
 
-    cout << left << setw(20) << "Journal Name:" << journalName << endl;
+    cout << left << GREEN << setw(20) << "Journal Name:" << journalName << endl;
     cout << left << setw(20) << "Volume:" << volume << endl;
     cout << left << setw(20) << "Issue Number:" << issueNumber << endl;
-    cout << left << setw(20) << "Editor:" << editor << endl;
+    cout << left << setw(20) << "Editor:" << editor << endl << RESET;
 
-    cout << "=====================================\n";
+    cout << BOLD << CYAN << "=====================================\n" << RESET;
 }
 
 void Journal::saveToCSV(ofstream &outputFile) const {

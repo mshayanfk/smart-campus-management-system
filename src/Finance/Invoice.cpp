@@ -22,11 +22,11 @@ Invoice::~Invoice() {
 
 void Invoice::input() {
 
-    cout << "\n=========================================" << endl;
+    cout << BOLD << CYAN << "\n=========================================" << endl;
     cout << "            INVOICE ENTRY               " << endl;
-    cout << "=========================================" << endl;
+    cout << "=========================================" << endl << RESET;
 
-    cout << "Enter Invoice ID: ";
+    cout << GREEN << "Enter Invoice ID: ";
     cin >> invoiceID;
 
     if (invoiceID <= 0) {
@@ -45,7 +45,7 @@ void Invoice::input() {
         throw runtime_error("Invalid Total Amount!");
     }
 
-    cout << "Enter Paid Amount: ";
+    cout << "Enter Paid Amount: " << RESET;
     cin >> paidAmount;
 
     if (paidAmount < 0 || paidAmount > totalAmount) {
@@ -70,50 +70,50 @@ void Invoice::generateInvoice(const FeeRecord &record) {
 
 void Invoice::display() const {
 
-    cout << "\n=========================================" << endl;
+    cout << BOLD << CYAN << "\n=========================================" << endl;
     cout << "             INVOICE DETAILS            " << endl;
-    cout << "=========================================" << endl;
+    cout << "=========================================" << endl << RESET;
 
-    cout << left << setw(20) << "Invoice ID:" << invoiceID << endl;
-    cout << left << setw(20) << "Issue Date:" << issueDate << endl;
+    cout << left << GREEN << setw(20) << "Invoice ID:" << invoiceID << endl;
+    cout << left << setw(20) << "Issue Date:" << issueDate << endl << RESET;
 
-    cout << "\n----------- FEE INFO -----------" << endl;
+    cout << BOLD << CYAN << "\n----------- FEE INFO -----------" << endl << RESET;
 
-    cout << left << setw(20) << "Student ID:" << feeRecord.getStudentID() << endl;
+    cout << left << GREEN << setw(20) << "Student ID:" << feeRecord.getStudentID() << endl;
     cout << left << setw(20) << "Student Name:" << feeRecord.getStudentName() << endl;
     cout << left << setw(20) << "Fee Type:" << feeRecord.getFeeType() << endl;
-    cout << left << setw(20) << "Fee Amount:" << feeRecord.getAmount() << endl;
+    cout << left << setw(20) << "Fee Amount:" << feeRecord.getAmount() << endl << RESET;
 
-    cout << "\n----------- PAYMENT -----------" << endl;
+    cout << BOLD << CYAN << "\n----------- PAYMENT -----------" << endl << RESET;
 
-    cout << left << setw(20) << "Total Amount:" << totalAmount << endl;
+    cout << left << GREEN << setw(20) << "Total Amount:" << totalAmount << endl;
     cout << left << setw(20) << "Paid Amount:" << paidAmount << endl;
-    cout << left << setw(20) << "Remaining:" << remainingAmount << endl;
+    cout << left << setw(20) << "Remaining:" << remainingAmount << endl << RESET;
 
-    cout << "=========================================" << endl;
+    cout << BOLD << CYAN << "=========================================" << endl << RESET;
 }
 
 
 void Invoice::printReceipt() const {
 
-    cout << "\n************** OFFICIAL RECEIPT **************" << endl;
+    cout << BOLD << CYAN << "\n************** OFFICIAL RECEIPT **************" << endl << RESET;
 
-    cout << "Invoice ID   : " << invoiceID << endl;
-    cout << "Issue Date   : " << issueDate << endl;
+    cout << GREEN << "Invoice ID   : " << invoiceID << endl;
+    cout << "Issue Date   : " << issueDate << endl << RESET;
 
-    cout << "--------------------------------------------" << endl;
+    cout << CYAN << "--------------------------------------------" << endl << RESET;
 
-    cout << "Student ID   : " << feeRecord.getStudentID() << endl;
+    cout << GREEN << "Student ID   : " << feeRecord.getStudentID() << endl;
     cout << "Student Name : " << feeRecord.getStudentName() << endl;
-    cout << "Fee Type     : " << feeRecord.getFeeType() << endl;
+    cout << "Fee Type     : " << feeRecord.getFeeType() << endl << RESET;
 
-    cout << "--------------------------------------------" << endl;
+    cout << CYAN << "--------------------------------------------" << endl << RESET;
 
-    cout << "Total Amount : " << totalAmount << endl;
+    cout << GREEN << "Total Amount : " << totalAmount << endl;
     cout << "Paid Amount  : " << paidAmount << endl;
-    cout << "Remaining    : " << remainingAmount << endl;
+    cout << "Remaining    : " << remainingAmount << endl << RESET;
 
-    cout << "********************************************" << endl;
+    cout << BOLD << CYAN << "********************************************" << endl << RESET;
 }
 
 

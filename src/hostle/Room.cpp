@@ -20,11 +20,11 @@ Room::~Room() {}
 
 void Room::input() {
 
-    cout << "========================================" << endl;
+    cout << CYAN << "========================================" << endl;
     cout << "----------- Room Information -----------" << endl;
-    cout << "========================================" << endl;
+    cout << "========================================" << endl << RESET;
 
-    cout << "Enter the Room Number = ";
+    cout << GREEN << "Enter the Room Number = ";
     cin >> roomNumber;
 
     if (roomNumber <= 0) {
@@ -60,7 +60,7 @@ void Room::input() {
     cin.ignore();
 
     if (isOccupied) {
-        cout << "Enter Occupant Name = ";
+        cout << "Enter Occupant Name = " << RESET;
         getline(cin, occupantName);
     }
     
@@ -72,18 +72,18 @@ void Room::input() {
 
 void Room::display() const {
 
-    cout << "========================================" << endl;
+    cout << BOLD << CYAN << "========================================" << endl;
     cout << "------------- ROOM DETAILS -------------" << endl;
-    cout << "========================================" << endl;
+    cout << "========================================" << endl << RESET;
 
-    cout << left << setw(25) << "Room Number = " << roomNumber << endl;
+    cout << left << GREEN << setw(25) << "Room Number = " << roomNumber << endl;
     cout << left << setw(25) << "Room Type = " << roomType << endl;
     cout << left << setw(25) << "Capacity = " << capacity << endl;
     cout << left << setw(25) << "Room Rent = " << roomRent << endl;
     cout << left << setw(25) << "Status = " << (isOccupied ? "Occupied" : "Available") << endl;
-    cout << left << setw(25) << "Occupant Name = " << (occupantName.empty() ? "None" : occupantName) << endl;
+    cout << left << setw(25) << "Occupant Name = " << (occupantName.empty() ? "None" : occupantName) << endl << RESET;
 
-    cout << "=========================================" << endl;
+    cout << BOLD << CYAN << "=========================================" << endl << RESET;
 }
 
 void Room::saveInCSV(ofstream &csvOutputFile) const {

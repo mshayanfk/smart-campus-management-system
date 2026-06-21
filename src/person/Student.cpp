@@ -23,11 +23,11 @@ Student::~Student() {
 void Student::input() {
     Person::input();
 
-    cout << "-----------------------------------------" <<  endl;
-    cout << "========== ENTER STUDENT DETAILS ========" << endl;
-    cout << "-----------------------------------------" << endl;
+    cout << CYAN << "-----------------------------------------" <<  endl;
+    cout << CYAN << "========== ENTER STUDENT DETAILS ========" << endl;
+    cout << CYAN << "-----------------------------------------" << endl;
 
-    cout << "Enter your Registration Number = ";
+    cout << GREEN << "Enter your Registration Number = ";
     getline(cin, registrationNo);
 
     cout << "Enter your Department = ";
@@ -39,7 +39,7 @@ void Student::input() {
     cout << "Enter your Section = ";
     getline(cin, section);
 
-    cout << "Enter Your GPA = ";
+    cout << "Enter Your GPA = " << RESET;
     cin >> gpa;
 
     if (cin.fail()) {
@@ -60,14 +60,14 @@ void Student::input() {
 void Student::display() const {
     Person::display();
 
-    cout << "========== STUDENT DETAILS ==========" << endl;
-    cout << left << setw(25) << "Registration Number = " << registrationNo << endl;
+    cout << BOLD << CYAN << "========== STUDENT DETAILS ==========" << endl;
+    cout << GREEN << left << setw(25) << "Registration Number = " << registrationNo << endl;
     cout << left << setw(25) << "Department = " << department << endl;
     cout << left << setw(25) << "Semester = " << semester << endl;
     cout << left << setw(25) << "Section = " << section << endl;
     cout << left << setw(25) << "GPA = " << gpa <<  endl;
-    cout << left << setw(25) << "Achievement = " <<  getAchievement() << endl;
-    cout << "=================================" << endl;
+    cout << left << setw(25) << "Achievement = " <<  getAchievement() << endl <<RESET;
+    cout << CYAN << "=================================" << endl <<RESET;
 
 }
 

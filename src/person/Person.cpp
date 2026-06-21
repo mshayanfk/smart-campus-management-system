@@ -24,9 +24,9 @@ void Person::input() {
         cin.ignore();
     }
 
-    cout << "---------- ENTER THE PERSON DETAILS ----------" << endl;
+    cout << CYAN << "---------- ENTER THE PERSON DETAILS ----------" << RESET << endl;
 
-    cout << "Enter Your Name = " << endl;
+    cout << GREEN << "Enter Your Name = ";
     getline(cin, name);
 
     if (name.empty()) {
@@ -54,7 +54,7 @@ void Person::input() {
 
     int choice;
 
-    cout << "Enter your Type (0 = Student, 1 = Staff, 2 = Faculty) = ";
+    cout << "Enter your Type (0 = Student, 1 = Staff, 2 = Faculty) = " <<RESET;
     cin >> choice;
 
     if (cin.fail() || choice < 0 || choice > 2) {
@@ -74,11 +74,11 @@ void Person::input() {
 
 void Person::display() const {
 
-    cout << "==============================" << endl;
-    cout << "          PERSON INFO         " << endl;
-    cout << "==============================" << endl;
+    cout << CYAN << "==============================" << endl;
+    cout << CYAN << "          PERSON INFO         " << endl;
+    cout << CYAN << "==============================" <<  RESET <<endl;
 
-    cout << left << setw(20) << "ID = " << id << endl;
+    cout << left << GREEN << setw(20) << "ID = " << id << endl;
     cout << left << setw(20) << "Person Name = " << name << endl;
     cout << left << setw(20) << "Person Age = " << age << endl;
     cout << left << setw(20) << "Contact Number = " <<  contact << endl;
@@ -92,7 +92,7 @@ void Person::display() const {
 
     else cout << "Staff " << endl;
 
-    cout << left << setw(20) << "Status = " << (isActive ? "Active" : "InActive") << endl;
+    cout << left << setw(20) << "Status = " << (isActive ? "Active" : "InActive") << endl <<RESET;
 
     cout << "============================" << endl;
 
