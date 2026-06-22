@@ -15,13 +15,12 @@ Course::Course()
     semester = "";
     isActive = true;
 }
-Course::~Course()
-{
+Course::~Course() {
 }
-void Course::input()
-{
-    cout << BOLD << CYAN << "\n ====== Enter Course Details ====== \n" <<RESET;
-    cout << GREEN << "Enter the course code: ";
+void Course::input() {
+    
+    cout << "\n ====== Enter Course Details ====== \n";
+    cout << "Enter the course code: ";
     cin >> courseCode;
 
     cout << "Enter the course name: ";
@@ -36,7 +35,7 @@ void Course::input()
     cin.ignore();
     cout << "Enter the department: ";
     getline(cin, department);
-    cout << "Enter the semester season: " <<RESET;
+    cout << "Enter the semester season: ";
     getline(cin, semester);
     isActive = true;
 }
